@@ -7,7 +7,7 @@ class conexion {
         $host = "localhost";
         $user = "root";
         $pass = "";
-        $db = "pruebas";
+        $db = "posweb";
 
         $conn = new mysqli($host, $user, $pass, $db);
         if (!$conn) {
