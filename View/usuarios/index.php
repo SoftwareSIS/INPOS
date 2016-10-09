@@ -1,5 +1,6 @@
 <?php require_once 'eliminar.php'; ?>
-<div class="container">
+<br>
+<div class="container table-responsive">
     <table class="table table-striped">
         <thead>
             <tr>
@@ -20,10 +21,10 @@
                     <td><?php echo $consulta[2]; ?></td>
                     <td><?php echo $consulta[3]; ?></td>
                     <td><?php echo $consulta[4]; ?></td>
-                    <td><a href="index.php?m=usu&id=<?php echo $consulta[0]; ?>">Icono A</a></td>
-                    <td><a href="#confirmarE" data-toggle='modal'>Icono E</a></td>
+                    <td><a href="index.php?m=usu&id=<?php echo $consulta[0]; ?>" class="btn btn-success btn-block"><span class="icon icon-pencil2"></span></a></td>
+                    <td><a href="#confirmarE" data-toggle='modal'class="btn btn-danger btn-block"><span class="icon icon-bin "></span></a></td>
                 </tr>
             <?php endforeach; ?>
         </tbody>
     </table>
-</div>
+    <button class="btn bg-primary"><span class="icon icon-user-plus" id="user"></span>Nuevo Usuario</button>
