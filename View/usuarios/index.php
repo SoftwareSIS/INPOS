@@ -1,23 +1,6 @@
-<div class="modal fade" id="confirmar">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&Chi;</button>
-                <h2 class="modal-title">Encabezado</h2>
-            </div>
-            <div class="modal-body">
-                <p>¿Desea Eiminar el registro ()?</p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-                <button type="button" class="btn btn-primary" id="btnAceptar">Aceptar</button>
-            </div>
-        </div>
-    </div>
-</div>
-<br>
+<?php require_once 'eliminar.php'; ?>
 <div class="container">
-    <table class="table table-hover">
+    <table class="table table-striped">
         <thead>
             <tr>
                 <th>Documento</th>
@@ -33,12 +16,12 @@
             <?php foreach ($query as $consulta): ?>
                 <tr>
                     <td><?php echo $consulta[0]; ?></td>
-                    <td><?php echo $consulta[1]; ?> </td>
+                    <td><?php echo $consulta[1]; ?></td>
                     <td><?php echo $consulta[2]; ?></td>
                     <td><?php echo $consulta[3]; ?></td>
                     <td><?php echo $consulta[4]; ?></td>
-                    <td><a href="#confirmar" data-toggle='modal'>Icono A</a></td>
-                    <td><a href="#">Icono E</a></td>
+                    <td><a href="index.php?m=usu&id=<?php echo $consulta[0]; ?>">Icono A</a></td>
+                    <td><a href="#confirmarE" data-toggle='modal'>Icono E</a></td>
                 </tr>
             <?php endforeach; ?>
         </tbody>

@@ -16,6 +16,13 @@ class usuarios_controller {
         require_once 'View/usuarios/index.php';
         require_once 'View/default/footer.php';
     }
+    
+        function actualizar() {
+        $query = $this->usuarios_model->get();
+        require_once 'View/default/header.php';
+        require_once 'View/usuarios/actualizar.php';
+        require_once 'View/default/footer.php';
+    }
 
 }
 
