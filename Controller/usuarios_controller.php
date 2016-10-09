@@ -12,9 +12,9 @@ class usuarios_controller {
 
     function index() {
         $query = $this->usuarios_model->get();
-        require_once 'View/header.php';
-        require_once 'View/footer.php';
-        require_once 'View/usuarios.php';
+        require_once 'View/default/header.php';
+        require_once 'View/usuarios/index.php';
+        require_once 'View/default/footer.php';
     }
 
 }

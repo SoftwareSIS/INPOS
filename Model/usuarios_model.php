@@ -11,7 +11,9 @@ class usuarios_model {
     }
 
     function get() {
-        $query = $this->DB->query("SELECT * FROM usuarios");
+        $query = $this->DB->query(" SELECT id_usu, nombre, apellido, p.descripcion, estado
+            FROM usuarios u
+            INNER JOIN perfiles p ON u.id_perf = p.id_perf;");
 
         while ($filas = mysqli_fetch_array($query)) {
             $this->consulta[] = $filas;
