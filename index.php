@@ -24,8 +24,8 @@ if (isset($_GET["m"])) {
             break;
     }
 } else {
-    require 'Estyle/css/Estilo_B.php';
+    require 'Estyle/bootstrap-3.3.7-dist/css/Estilo_B.php';
     require_once 'View/default/header.php';
-    require 'Estyle/js/Estilo_JQ.php';
+    require 'Estyle/bootstrap-3.3.7-dist/js/Estilo_JQ.php';
 }
 ?>

@@ -27,4 +27,4 @@
             <?php endforeach; ?>
         </tbody>
     </table>
-    <button class="btn bg-primary"><span class="icon icon-user-plus" id="user"></span>Nuevo Usuario</button>
+    <button class="btn bg-primary"><span class="icon icon-user-plus user"></span>Nuevo Usuario</button>

@@ -3,9 +3,10 @@
     <head>
         <title>INPOS</title>
         <meta charset="UTF-8">
-        <link href="Estyle/css/bootstrap.css" rel="stylesheet" type="text/css"/>
-        <link href="Estyle/css/bootstrap-theme.css" rel="stylesheet" type="text/css"/>
-        <link href="Estyle/fonts/style.css" rel="stylesheet" type="text/css"/>
+        <link href="Estyle/bootstrap-3.3.7-dist/css/bootstrap.css" rel="stylesheet" type="text/css"/>
+        <link href="Estyle/bootstrap-3.3.7-dist/css/bootstrap-theme.css" rel="stylesheet" type="text/css"/>
+        <link href="Estyle/bootstrap-3.3.7-dist/fonts/style.css" rel="stylesheet" type="text/css"/>
+        <link href="Estyle/bootstrap-3.3.7-dist/css/inpos.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
         <header>
