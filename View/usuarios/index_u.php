@@ -27,4 +27,4 @@
             <?php endforeach; ?>
         </tbody>
     </table>
-    <button class="btn bg-primary"><span class="icon icon-user-plus user"></span>Nuevo Usuario</button>
+    <button onclick="location.href = 'index.php?m=usu&crud=crear'" class="btn bg-primary"><span class="icon icon-user-plus user"></span>Nuevo Usuario</button>

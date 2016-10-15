@@ -21,6 +21,13 @@ class usuarios_model {
         return $this->consulta;
     }
 
+    function guardar_registro($data) {
+        $sql = "INSERT INTO usuarios (id_usu,nombre,apellido,clave,id_perf,estado) VALUES"
+                . "('" . $data['id_usu'] . "','" . $data['nombre'] . "','" . $data['apellido'] . "',"
+                . "'" . $data['clave'] . "','" . $data['id_perf'] . "','" . $data['estado'] . "')";
+        mysqli_query($this->DB, $sql) or die("Error al insertar datos \n" . mysqli_error($this->DB));
+    }
+
 }
 
 ?>

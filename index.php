@@ -2,26 +2,28 @@
 
 require_once 'DB/conexion.php';
 
-if (isset($_GET["m"])) {
-    switch ($_GET["m"]) {
-        case "usu":
-            if (isset($_GET["id"])) {
-                require_once 'Controller/usuarios_controller.php';
-                $controller = new usuarios_controller();
-                $controller->actualizar();
-                break;
-                break;
-            } else {
-                require_once 'Controller/usuarios_controller.php';
-                $controller = new usuarios_controller();
-                $controller->index();
-                break;
-            }
-        case "per":
-            require_once 'Controller/perfiles_controller.php';
-            $controller = new perfiles_controller();
-            $controller->index();
-            break;
+if (isset($_REQUEST["m"])) {
+    $metodo = $_REQUEST["m"];
+    require_once 'Controller/usuarios_controller.php';
+    $controller = new usuarios_controller();
+    if (method_exists($controller, $metodo)) {
+        $controller->$metodo();
+    } else {
+        switch ($metodo) {
+            case "usu":
+                if (isset($_REQUEST["id"])) {
+                    $controller->actualizar();
+                    break;
+                } else {
+                    if (isset($_REQUEST["crud"])) {
+                        $controller->crear();
+                        break;
+                    } else {
+                        $controller->index();
+                        break;
+                    }
+                }
+        }
     }
 } else {
     require 'Estyle/bootstrap-3.3.7-dist/css/Estilo_B.php';
