@@ -10,7 +10,7 @@ class perfiles_model {
         $this->consulta = array();
     }
 
-    function get() {
+    function get_p() {
         $query = $this->DB->query("SELECT * FROM perfiles");
         while ($fila = mysqli_fetch_array($query)) {
             $this->consulta[] = $fila;

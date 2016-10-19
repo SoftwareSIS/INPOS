@@ -10,10 +10,10 @@ class perfiles_controller {
         $this->perfil_model = new perfiles_model();
     }
 
-    function index() {
-        $query = $this->perfil_model->get();
+    function index_p() {
+        $query = $this->perfil_model->get_p();
         require_once 'View/default/header.php';
-        require_once 'View/perfiles/index.php';
+        require_once 'View/perfiles/index_p.php';
         require_once 'View/default/footer.php';
     }
 
