@@ -25,6 +25,8 @@
                                 <ul class="dropdown-menu">
                                     <li><a href="index.php?m=usu">Usuarios</a></li>
                                     <li><a href="index.php?m=per">Perfiles</a></li>
+                                    <li><a href="index.php?m=prov">Proveedores</a></li>
+                                    <li><a href="#">Productos</a></li>
                                 </ul>	
                             </li>
                             <li>

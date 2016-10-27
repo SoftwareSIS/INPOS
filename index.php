@@ -54,9 +54,50 @@ if (isset($_REQUEST["m"])) {
                     if (isset($_REQUEST["cd"])) {
                         $controller->crear_p();
                         break;
+                    } else {
+                        if (isset($_REQUEST["eli"])) {
+                            $eli = $_REQUEST["eli"];
+                            $controller->eliminar_p($eli);
+                            break;
+                        } else {
+                            $controller->index_p();
+                            break;
+                        }
                     }
-                    $controller->index_p();
+                }
+            }
+
+
+
+
+        case "prov":
+            require_once 'Controller/proveedores_controller.php';
+            $controller = new proveedores_controller();
+            if (isset($_REQUEST["c"])) {
+                $metodoPR = $_REQUEST["c"];
+                if (method_exists($controller, $metodoPR)) {
+                    $controller->$metodoPR();
                     break;
+                }
+            } else {
+                if (isset($_REQUEST["id"])) {
+                    $id = $_REQUEST["id"];
+                    $controller->actualizar_pr($id);
+                    break;
+                } else {
+                    if (isset($_REQUEST["cd"])) {
+                        $controller->crear_pr();
+                        break;
+                    } else {
+                        if (isset($_REQUEST["eli"])) {
+                            $eli = $_REQUEST["eli"];
+                            $controller->eliminar_pr($eli);
+                            break;
+                        } else {
+                            $controller->index_pr();
+                            break;
+                        }
+                    }
                 }
             }
     }

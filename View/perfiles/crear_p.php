@@ -4,11 +4,11 @@
             <table class="table table-condensed table-hover">
                 <tr>
                     <th><label for="doc">Id:</label></th>
-                    <td><input type='text' name="txtDocumento" class="form-control " placeholder="Ingrese Su Documento"></td>
+                    <td><input type='text' name="txtID" class="form-control " placeholder="Ingrese su ID"></td>
                 </tr>
                 <tr>
                     <th><label for="nom">Descripcion:</label></th>
-                    <td><input type='text' name="txtNombre" class="form-control" placeholder="Nombres Completos"></td>
+                    <td><input type='text' name="txtDescripcion" class="form-control" placeholder="Ingrese su Perfil"></td>
                 </tr>
             </table>
         </div>
