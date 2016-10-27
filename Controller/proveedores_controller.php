@@ -44,7 +44,7 @@ class proveedores_controller {
     function guardarPR() {
         $data['id_nit'] = $_REQUEST['txtNit'];
         $data['dir_factura'] = $_REQUEST['txtFactura'];
-        $data['estado'] = $_REQUEST['txtEstado'];
+        $data['estado'] = $_REQUEST['cbEstado'];
 
         $this->proveedores_model->guardar_pr($data);
         $this->index_pr();
@@ -53,7 +53,7 @@ class proveedores_controller {
     function actualizarPR() {
         $data['id_nit'] = $_REQUEST['txtNit'];
         $data['dir_factura'] = $_REQUEST['txtFactura'];
-        $data['estado'] = $_REQUEST['txtEstado'];
+        $data['estado'] = $_REQUEST['cbEstado'];
         
         $this->proveedores_model->actualizar_pr($data);
         $this->index_pr();

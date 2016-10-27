@@ -7,12 +7,16 @@
                     <td><input type='text' name="txtNit" class="form-control " placeholder="Ingrese Nit"></td>
                 </tr>
                 <tr>
-                    <th><label for="fac">Factura:</label></th>
+                    <th><label for="fac">Direccion De Facturación:</label></th>
                     <td><input type='text' name="txtFactura" class="form-control" placeholder="Factura"></td>
                 </tr>
                 <tr>
                     <th><label for="est">Estado:</label></th>
-                    <td><input type='text' name="txtEstado" class="form-control" placeholder="Estado"></td>
+                    <td><select class="form-control" name="cbEstado">
+                            <option>Seleccione Una Opcion</option>
+                            <option>Activo</option>
+                            <option>Inactivo</option>
+                        </select></td>
                 </tr>
             </table>
         </div>

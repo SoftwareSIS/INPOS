@@ -1,16 +1,16 @@
 <?php
 
 require_once 'Model/usuarios_model.php';
-//require_once 'Model/perfiles_model.php';
+require_once 'Model/perfiles_model.php';
 
 class usuarios_controller {
 
     private $usuarios_model;
-    //private $perfiles_model;
+    private $perfiles_model;
 
     function __construct() {
         $this->usuarios_model = new usuarios_model();
-        //$this->perfiles_model = new perfiles_model();
+        $this->perfiles_model = new perfiles_model();
     }
 
     function index_u() {
@@ -21,7 +21,7 @@ class usuarios_controller {
     }
 
     function crear_u() {
-        //$per = $this->perfiles_model->get_p();
+        $per = $this->perfiles_model->get_p();
         require_once 'View/default/header.php';
         require_once 'View/usuarios/crear_u.php';
         require_once 'View/default/footer.php';
@@ -29,7 +29,7 @@ class usuarios_controller {
 
     function actualizar_u($id) {
         $query = $this->usuarios_model->consulta_u($id);
-        //$per = $this->perfiles_model->get_p();
+        $per = $this->perfiles_model->get_p();
         require_once 'View/default/header.php';
         require_once 'View/usuarios/actualizar_u.php';
         require_once 'View/default/footer.php';

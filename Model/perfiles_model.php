@@ -17,8 +17,8 @@ class perfiles_model {
         }
         return $this->consulta;
     }
-    
-     function guardar_p($data) {
+
+    function guardar_p($data) {
         $sql = "INSERT INTO perfiles VALUES"
                 . "('" . $data['id_perf'] . "','" . $data['descripcion'] . "')";
         mysqli_query($this->DB, $sql) or die("Error al insertar datos (Perfiles)\n" . mysqli_error($this->DB));
@@ -26,13 +26,17 @@ class perfiles_model {
 
     function actualizar_p($data) {
         $sql = "UPDATE perfiles SET "
-                . "descripcion = '" . $data['descripcion'] . "', "
+                . "descripcion = '" . $data['descripcion'] . "' "
                 . "WHERE id_perf = '" . $data["id_perf"] . "'";
-        mysqli_query($this->DB, $sql) or die("Error al actualizar datos (Perfiles) " . $sql . mysqli_error($this->DB));
+        if ($this->DB) {
+            mysqli_query($this->DB, $sql);
+        } else {
+            die("Error al actualizar datos (Perfiles) " . $sql . mysqli_error($this->DB));
+        }
     }
 
     function consulta_p($id) {
-        $actu = $this->DB->query("SELECT * from perfiles");
+        $actu = $this->DB->query("SELECT * FROM perfiles WHERE id_perf =" . $id);
         while ($filas = mysqli_fetch_array($actu)) {
             $this->consulta[] = $filas;
         }
@@ -41,7 +45,11 @@ class perfiles_model {
 
     function eliminar_p($id) {
         $sql = $this->DB->query("DELETE FROM perfiles WHERE id_perf =" . $id);
-        mysqli_query($this->DB, $sql) or die("Error al Eliminar el registro (Usuario) " . $sql . mysqli_error($this->DB));
+        if ($this->DB) {
+            mysqli_query($this->DB, $sql);
+        } else {
+            die("Error al Eliminar el registro (Usuario) " . $sql . mysqli_error($this->DB));
+        }
     }
 
 }

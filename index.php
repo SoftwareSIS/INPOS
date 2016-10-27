@@ -48,7 +48,8 @@ if (isset($_REQUEST["m"])) {
                 }
             } else {
                 if (isset($_REQUEST["id"])) {
-                    $controller->actualizar_p();
+                    $id = $_REQUEST["id"];
+                    $controller->actualizar_p($id);
                     break;
                 } else {
                     if (isset($_REQUEST["cd"])) {
@@ -66,9 +67,6 @@ if (isset($_REQUEST["m"])) {
                     }
                 }
             }
-
-
-
 
         case "prov":
             require_once 'Controller/proveedores_controller.php';
@@ -95,6 +93,37 @@ if (isset($_REQUEST["m"])) {
                             break;
                         } else {
                             $controller->index_pr();
+                            break;
+                        }
+                    }
+                }
+            }
+
+        case "prod":
+            require_once 'Controller/productos_controller.php';
+            $controller = new productos_controller();
+            if (isset($_REQUEST["c"])) {
+                $metodoPRO = $_REQUEST["c"];
+                if (method_exists($controller, $metodoPRO)) {
+                    $controller->$metodoPRO();
+                    break;
+                }
+            } else {
+                if (isset($_REQUEST["id"])) {
+                    $id = $_REQUEST["id"];
+                    $controller->actualizar_pro($id);
+                    break;
+                } else {
+                    if (isset($_REQUEST["cd"])) {
+                        $controller->crear_pro();
+                        break;
+                    } else {
+                        if (isset($_REQUEST["eli"])) {
+                            $eli = $_REQUEST["eli"];
+                            $controller->eliminar_pro($eli);
+                            break;
+                        } else {
+                            $controller->index_pro();
                             break;
                         }
                     }

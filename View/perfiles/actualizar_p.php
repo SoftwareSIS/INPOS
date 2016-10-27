@@ -5,7 +5,7 @@
                 <?php foreach ($query as $dato): endforeach; ?>
                 <tr>
                     <th><label for="id">ID:</label></th>
-                    <td><input type='text' name="txtID" class="form-control " placeholder="Ingrese Su ID" value="<?php echo $dato[0]; ?>"></td>
+                    <td><input type='text' name="txtID" class="form-control " placeholder="Ingrese Su ID" value="<?php echo $dato[0]; ?>" readonly="readonly"></td>
                 </tr>
                 <tr>
                     <th><label for="des">Descripcion:</label></th>
