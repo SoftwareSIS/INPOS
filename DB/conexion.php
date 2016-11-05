@@ -13,8 +13,11 @@ class conexion {
         if (!$conn) {
             echo "Error al conectar la Base de Datos 'posweb'";
         } else {
+            mysqli_set_charset($conn, "utf8");
             return $conn;
         }
+        
+        
     }
 
 }

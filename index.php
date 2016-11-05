@@ -129,6 +129,37 @@ if (isset($_REQUEST["m"])) {
                     }
                 }
             }
+
+        case "ter":
+            require_once 'Controller/terceros_controller.php';
+            $controller = new terceros_controller();
+            if (isset($_REQUEST["c"])) {
+                $metodoPRO = $_REQUEST["c"];
+                if (method_exists($controller, $metodoPRO)) {
+                    $controller->$metodoPRO();
+                    break;
+                }
+            } else {
+                if (isset($_REQUEST["id"])) {
+                    $id = $_REQUEST["id"];
+                    $controller->actualizar_pro($id);
+                    break;
+                } else {
+                    if (isset($_REQUEST["cd"])) {
+                        $controller->crear();
+                        break;
+                    } else {
+                        if (isset($_REQUEST["eli"])) {
+                            $eli = $_REQUEST["eli"];
+                            $controller->eliminar_pro($eli);
+                            break;
+                        } else {
+                            $controller->index();
+                            break;
+                        }
+                    }
+                }
+            }
     }
 } else {
     require 'Estyle/bootstrap-3.3.7-dist/css/Estilo_B.php';
