@@ -2,15 +2,12 @@
 
 require_once 'Model/perfiles_model.php';
 
-
 class perfiles_controller {
 
     private $perfiles_model;
-    
 
     function __construct() {
         $this->perfiles_model = new perfiles_model();
-        
     }
 
     function index_p() {
@@ -44,15 +41,14 @@ class perfiles_controller {
     function guardarP() {
         $data['id_perf'] = $_REQUEST['txtID'];
         $data['descripcion'] = $_REQUEST['txtDescripcion'];
-        
+
         $this->perfiles_model->guardar_p($data);
-        $this->index_p();
     }
 
     function actualizarP() {
         $data['id_perf'] = $_REQUEST['txtID'];
         $data['descripcion'] = $_REQUEST['txtDescripcion'];
-        
+
         $this->perfiles_model->actualizar_p($data);
         $this->index_p();
     }
@@ -61,6 +57,12 @@ class perfiles_controller {
         $id = $_REQUEST['txtID'];
         $this->perfiles_model->eliminar_p($id);
         $this->index_p();
+    }
+
+    function error() {
+        require_once 'View/default/header.php';
+        require_once 'View/perfiles/error_1062.php';
+        require_once 'View/default/footer.php';
     }
 
 }

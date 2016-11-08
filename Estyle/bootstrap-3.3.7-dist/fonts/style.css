@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'icomoon';
-  src:  url('fonts/icomoon.eot?w8iw90');
-  src:  url('fonts/icomoon.eot?w8iw90#iefix') format('embedded-opentype'),
-    url('fonts/icomoon.ttf?w8iw90') format('truetype'),
-    url('fonts/icomoon.woff?w8iw90') format('woff'),
-    url('fonts/icomoon.svg?w8iw90#icomoon') format('svg');
+  src:  url('fonts/icomoon.eot?16lbt4');
+  src:  url('fonts/icomoon.eot?16lbt4#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?16lbt4') format('truetype'),
+    url('fonts/icomoon.woff?16lbt4') format('woff'),
+    url('fonts/icomoon.svg?16lbt4#icomoon') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -27,6 +27,12 @@
 .icon-home:before {
   content: "\e900";
 }
+.icon-home2:before {
+  content: "\e901";
+}
+.icon-office:before {
+  content: "\e903";
+}
 .icon-pencil2:before {
   content: "\e906";
 }
@@ -36,11 +42,23 @@
 .icon-images:before {
   content: "\e90e";
 }
+.icon-books:before {
+  content: "\e920";
+}
+.icon-profile:before {
+  content: "\e923";
+}
+.icon-stack:before {
+  content: "\e92e";
+}
 .icon-folder-download:before {
   content: "\e933";
 }
 .icon-folder-upload:before {
   content: "\e934";
+}
+.icon-barcode:before {
+  content: "\e937";
 }
 .icon-cart:before {
   content: "\e93a";
@@ -66,6 +84,12 @@
 .icon-floppy-disk:before {
   content: "\e962";
 }
+.icon-user:before {
+  content: "\e971";
+}
+.icon-users:before {
+  content: "\e972";
+}
 .icon-user-plus:before {
   content: "\e973";
 }
@@ -87,20 +111,44 @@
 .icon-unlocked:before {
   content: "\e990";
 }
+.icon-wrench:before {
+  content: "\e991";
+}
 .icon-cogs:before {
   content: "\e995";
+}
+.icon-stats-dots:before {
+  content: "\e99b";
+}
+.icon-stats-bars2:before {
+  content: "\e99d";
 }
 .icon-bin:before {
   content: "\e9ac";
 }
+.icon-briefcase:before {
+  content: "\e9ae";
+}
+.icon-accessibility:before {
+  content: "\e9b2";
+}
 .icon-switch:before {
   content: "\e9b6";
+}
+.icon-tree:before {
+  content: "\e9bc";
+}
+.icon-earth:before {
+  content: "\e9ca";
 }
 .icon-attachment:before {
   content: "\e9cd";
 }
 .icon-eye:before {
   content: "\e9ce";
+}
+.icon-man-woman:before {
+  content: "\e9de";
 }
 .icon-plus:before {
   content: "\ea0a";

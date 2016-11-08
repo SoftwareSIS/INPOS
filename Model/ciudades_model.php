@@ -11,11 +11,16 @@ class ciudades_model {
     }
 
     function get() {
-        $query = $this->DB->query("SELECT * FROM ciudades");
+        $query = mysqli_query($this->DB, "SELECT * FROM ciudades ORDER BY id_ciudad");
         while ($fila = mysqli_fetch_array($query)) {
             $this->consulta[] = $fila;
         }
-        return $this->consulta;
+
+        if (!$query) {
+            die("Error al consultar Registros (Ciudades)" . $query . "Codigo:  " . mysqli_errno($this->DB));
+        } else {
+            return $this->consulta;
+        }
     }
 
 }

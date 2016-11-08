@@ -1,0 +1,9 @@
+Mensajes campo numerico
+1. Ingrese Un ####
+2. Caracter No Valido, Campo Numerico
+3. Maximo De Caracteres (#-#)
+
+Mensajes campo Texto
+1. Ingrese Un ###
+2. Caracter No Valido, Campo De Texto
+

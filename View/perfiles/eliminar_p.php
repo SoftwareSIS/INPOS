@@ -7,7 +7,7 @@
                 <thead>
                     <tr>
                         <th>ID</th>
-                        <th>descripcion</th>
+                        <th>Descripcion</th>
                     </tr>
                 </thead>
                 <tbody>

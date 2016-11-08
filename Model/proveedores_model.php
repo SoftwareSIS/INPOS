@@ -11,51 +11,62 @@ class proveedores_model {
     }
 
     function get_pr() {
-        $query = $this->DB->query("SELECT p.id_nit, t.nombre, p.dir_factura, p.estado "
+        $query = mysqli_query($this->DB, "SELECT p.id_nit, t.nombre, p.dir_factura, p.estado "
                 . "FROM proveedores p "
-                . "INNER JOIN terceros t ON p.id_nit = t.id_tercero");
+                . "INNER JOIN terceros t ON p.id_nit = t.id_tercero"
+                . "ORDER BY id_nit");
 
         while ($filas = mysqli_fetch_array($query)) {
             $this->consulta[] = $filas;
         }
-        return $this->consulta;
+
+        if (!$query) {
+            die("Error al consultar Registros (Proveedores)" . $query . "Codigo: " . mysqli_errno($this->DB));
+        } else {
+            return $this->consulta;
+        }
     }
 
     function guardar_pr($data) {
-        $sql = "INSERT INTO proveedores VALUES"
-                . "('" . $data['id_nit'] . "','" . $data['dir_factura'] . "','" . $data['estado'] . "')";
-        mysqli_query($this->DB, $sql) or die("Error al insertar datos (Proveedor)\n" . mysqli_error($this->DB));
+        $sql = mysqli_query($this->DB, "INSERT INTO proveedores VALUES"
+                . "('" . $data['id_nit'] . "','" . $data['dir_factura'] . "','" . $data['estado'] . "')");
+
+        if (!$sql) {
+            die("Error al insertar datos (Proveedor)" . $sql . "Codigo: " . mysqli_errno($this->DB));
+        }
     }
 
     function actualizar_pr($data) {
-        $sql = "UPDATE proveedores SET "
+        $sql = mysqli_query($this->DB, "UPDATE proveedores SET "
                 . "dir_factura = '" . $data['dir_factura'] . "', "
                 . "estado = '" . $data["estado"] . "' "
-                . "WHERE id_nit = '" . $data["id_nit"] . "'";
-//        mysqli_query($this->DB, $sql) or die("Error al actualizar datos (Usuario) " . $sql . mysqli_error($this->DB));
+                . "WHERE id_nit = '" . $data["id_nit"] . "'");
 
-        if ($this->DB) {
-            mysqli_query($this->DB, $sql);
-        } else {
-            die("Error al actualizar el proveedor ('" . $data['id_nit'] . "')");
+        if (!$sql) {
+            die("Error al actualizar el proveedor ('" . $data['id_nit'] . "')" . $sql . "Codigo: " . mysqli_errno($this->DB));
         }
     }
 
     function consulta_pr($id) {
-        $actu = $this->DB->query("SELECT id_nit, dir_factura, estado
-            FROM proveedores WHERE id_nit = '" . $id . "'");
+        $actu = mysqli_query($this->DB, "SELECT id_nit, dir_factura, estado
+            FROM proveedores WHERE id_nit = '" . $id . "' ORDER BY id_nit");
         while ($filas = mysqli_fetch_array($actu)) {
             $this->consulta[] = $filas;
         }
-        return $this->consulta;
+
+        if (!$actu) {
+            die("Error al consultar Registros (Proveedores)" . $actu . "Codigo: " . mysqli_errno($this->DB));
+        } else {
+            return $this->consulta;
+        }
     }
 
     function eliminar_pr($id) {
-        $sql = $this->DB->query("DELETE FROM proveedores WHERE id_nit =" . $id);
+        $sql = mysqli_query($this->DB, "DELETE FROM proveedores WHERE id_nit = '" . $id . "'");
         if ($this->DB) {
             mysqli_query($this->DB, $sql);
         } else {
-            die("Error al Eliminar el registro ('" . $id . "')");
+            die("Error al Eliminar el registro ('" . $id . "' ) " . $sql . "Codigo: " . mysqli_errno($this->DB));
         }
     }
 

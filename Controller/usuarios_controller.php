@@ -51,7 +51,6 @@ class usuarios_controller {
         $data['estado'] = $_REQUEST['cbEstado'];
 
         $this->usuarios_model->guardar_u($data);
-        $this->index_u();
     }
 
     function actualizarU() {
@@ -70,6 +69,12 @@ class usuarios_controller {
         $id = $_REQUEST['txtDocumento'];
         $this->usuarios_model->eliminar_u($id);
         $this->index_u();
+    }
+
+    function error() {
+        require_once 'View/default/header.php';
+        require_once 'View/usuarios/error_1452.php';
+        require_once 'View/default/footer.php';
     }
 
 }

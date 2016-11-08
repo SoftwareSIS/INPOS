@@ -5,43 +5,73 @@
                 <?php foreach ($query as $dato): endforeach; ?>
                 <tr>
                     <th><label for="doc">Documento:</label></th>
-                    <td><input type='text' name="txtDocumento" class="form-control " placeholder="Ingrese Su Documento" value="<?php echo $dato[0]; ?>"></td>
+                    <td>
+                        <input type='text' name="txtDocumento" class="form-control" 
+                               placeholder="Ingrese Su Documento (12)" readonly="readonly"
+                               value="<?php echo $dato[0]; ?>">
+                        <span class="help-block"></span>
+                    </td>
                 </tr>
                 <tr>
                     <th><label for="nom">Nombre:</label></th>
-                    <td><input type='text' name="txtNombre" class="form-control" placeholder="Nombres Completos" value="<?php echo $dato[1]; ?>"></td>
+                    <td>
+                        <input type='text' id="txtNombre" name="txtNombre" class="form-control" 
+                               placeholder="Nombres Completos" onkeyup="validarText('txtNombre', 'Ingrese Un Nombre',
+                                               'Caracter No Valido, Campo De Texto')" value="<?php echo $dato[1]; ?>">
+                        <span class="help-block"></span>
+                    </td>
                 </tr>
                 <tr>
                     <th><label for="ape">Apellido:</label></th>
-                    <td><input type='text' name="txtApellido" class="form-control" placeholder="Apellidos Completos" value="<?php echo $dato[2]; ?>"></td>
+                    <td>
+                        <input type='text' id="txtApellido" name="txtApellido" class="form-control" 
+                               placeholder="Apellidos Completos" onkeypress="validarText('txtApellido', 'Ingrese Un Apellido',
+                                               'Caracter No Valido, Campo De Texto')" value="<?php echo $dato[2]; ?>">
+                        <span class="help-block"></span>
+                    </td>
                 </tr>
                 <tr>
                     <th><label for="cl1">Clave:</label></th>
-                    <td><input type='password' name="psClave" class="form-control" placeholder="Contraseña"></td>
+                    <td>
+                        <input type='password' id="psClave" name="psClave" class="form-control" 
+                               placeholder="Contraseña" onkeyup="tamaño1('psClave', 'Minimo De Caracteres (8)')">
+                        <span class="help-block"></span>
+                    </td>
                 </tr>
                 <tr>
                     <th><label for="cl2">Confirmar Clave:</label></th>
-                    <td><input type='password' name="psClave2" class="form-control" placeholder="Repetir Contraseña"></td>
+                    <td>
+                        <input type='password' id="psClave2" name="psClave2" class="form-control" 
+                               placeholder="Repetir Contraseña" onkeyup="validarPass1('psClave2', 'psClave',
+                                               'Repita La Contraseña', 'Las Contraseñas No Coindicen')">
+                        <span class="help-block"></span>
+                    </td>
                 </tr>
                 <tr class="form-group">
-                    <th><label for="per">perfil:</label></th>
+                    <th><label for="per">Perfil:</label></th>
                     <td>
-                        <select class="form-control" name="cbPerfil">
-                            <option selected="selected">Seleccione Una Opcion...</option>
+                        <select class="form-control" id="cbPerfil" name="cbPerfil" onkeypress="validarCB('cbPerfil', 'Campo Sin Seleccionar')">
+                            <option value="">Seleccione Una Opcion...</option>
                             <?php foreach ($per as $perfil): ?>
-                                <option value="<?php echo $perfil["id_perf"]; ?>"><?php echo $perfil["descripcion"]; ?></option>
+                                <option <?php echo ($perfil[0] == $dato[5]) ? ' selected="selected"' : ''; ?> value="<?php echo $perfil["id_perf"]; ?>"><?php echo $perfil["descripcion"]; ?></option>
                             <?php endforeach; ?>
                         </select>
+                        <span class="help-block"></span>
                     </td>
                 </tr>
                 <tr class="form-group">
                     <th><label for="est">Estado:</label></th>
                     <td>
-                        <select class="form-control" name="cbEstado">
-                            <option selected="selected">Seleccione Una Opcion...</option>
-                            <option>Activo</option>
-                            <option>Inactivo</option>
+                        <select class="form-control" id="cbEstado" name="cbEstado" onkeypress="validarCB('cbEstado', 'Campo Sin Seleccionar')">
+                            <option value="">Seleccione Una Opcion...</option>
+                            <option selected="selected"><?php echo $dato[4]; ?></option>
+                            <?php if ($dato[4] == "Activo") { ?>
+                                <option><?php echo "Inactivo" ?></option>
+                            <?php } else { ?>
+                                <option><?php echo "Activo" ?></option>
+                            <?php } ?>
                         </select>
+                        <span class="help-block"></span>
                     </td>
                 </tr>
             </table>

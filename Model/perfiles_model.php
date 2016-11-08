@@ -4,6 +4,7 @@ class perfiles_model {
 
     private $DB;
     private $consulta;
+    private $perfiles_controller;
 
     function __construct() {
         $this->DB = conexion::conex();
@@ -11,44 +12,64 @@ class perfiles_model {
     }
 
     function get_p() {
-        $query = $this->DB->query("SELECT * FROM perfiles");
+        $query = mysqli_query($this->DB, "SELECT * FROM perfiles ORDER BY id_perf");
         while ($fila = mysqli_fetch_array($query)) {
             $this->consulta[] = $fila;
         }
-        return $this->consulta;
+
+        if (!$query) {
+            die("Error al consultar Registros (Perfiles)" . $query . "Codigo:  " . mysqli_errno($this->DB));
+        } else {
+            return $this->consulta;
+        }
     }
 
     function guardar_p($data) {
-        $sql = "INSERT INTO perfiles VALUES"
-                . "('" . $data['id_perf'] . "','" . $data['descripcion'] . "')";
-        mysqli_query($this->DB, $sql) or die("Error al insertar datos (Perfiles)\n" . mysqli_error($this->DB));
+        $sql = mysqli_query($this->DB, "INSERT INTO perfiles VALUES"
+                . "('" . $data['id_perf'] . "','" . $data['descripcion'] . "')");
+
+        if (!$sql) {
+            require_once 'Controller/perfiles_controller.php';
+            $this->perfiles_controller = new perfiles_controller();
+            if (mysqli_errno($this->DB) == 1062) {
+                $this->perfiles_controller->error();
+            } else {
+                if (mysqli_errno($this->DB) != 1062) {
+                    die("Error al Guardar (Perfiles)" . $query . "Codigo:  " . mysqli_errno($this->DB));
+                }
+            }
+        } else {
+            header('Location: index.php?m=per');
+        }
     }
 
     function actualizar_p($data) {
-        $sql = "UPDATE perfiles SET "
+        $sql = mysqli_query($this->DB, "UPDATE perfiles SET "
                 . "descripcion = '" . $data['descripcion'] . "' "
-                . "WHERE id_perf = '" . $data["id_perf"] . "'";
-        if ($this->DB) {
-            mysqli_query($this->DB, $sql);
-        } else {
-            die("Error al actualizar datos (Perfiles) " . $sql . mysqli_error($this->DB));
+                . "WHERE id_perf = '" . $data["id_perf"] . "'");
+        if (!$sql) {
+            die("Error al actualizar datos (Perfiles) " . $sql . "Codigo: " . mysqli_errno($this->DB));
         }
     }
 
     function consulta_p($id) {
-        $actu = $this->DB->query("SELECT * FROM perfiles WHERE id_perf =" . $id);
+        $actu = mysqli_query($this->DB, "SELECT * FROM perfiles WHERE id_perf = '" . $id . "' ORDER BY id_perf");
         while ($filas = mysqli_fetch_array($actu)) {
             $this->consulta[] = $filas;
         }
-        return $this->consulta;
+
+        if (!$actu) {
+            die("Error al consultar registros (Perfiles)" . $actu . "Codigo: " . mysqli_errno($this->DB));
+        } else {
+            return $this->consulta;
+        }
     }
 
     function eliminar_p($id) {
-        $sql = $this->DB->query("DELETE FROM perfiles WHERE id_perf =" . $id);
-        if ($this->DB) {
-            mysqli_query($this->DB, $sql);
-        } else {
-            die("Error al Eliminar el registro (Usuario) " . $sql . mysqli_error($this->DB));
+        $sql = mysqli_query($this->DB, "DELETE FROM perfiles WHERE id_perf =" . $id);
+
+        if (!$sql) {
+            die("Error al Eliminar el registro (Usuario) " . $sql . "Codigo: " . mysqli_errno($this->DB));
         }
     }
 

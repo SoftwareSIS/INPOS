@@ -1,13 +1,9 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta charset="UTF-8">
         <title>INPOS</title>
         <meta charset="UTF-8">
-        <link href="Estyle/bootstrap-3.3.7-dist/css/bootstrap.css" rel="stylesheet" type="text/css"/>
-        <link href="Estyle/bootstrap-3.3.7-dist/css/bootstrap-theme.css" rel="stylesheet" type="text/css"/>
-        <link href="Estyle/bootstrap-3.3.7-dist/fonts/style.css" rel="stylesheet" type="text/css"/>
-        <link href="Estyle/bootstrap-3.3.7-dist/css/inpos.css" rel="stylesheet" type="text/css"/>
+        <?php require_once 'Estyle/bootstrap-3.3.7-dist/css/Estilo_B.php'; ?>
     </head>
     <body>
         <header>
@@ -24,11 +20,22 @@
                             <li class="dropdown">
                                 <a class="dropdown-toggle" data-toggle="dropdown">Administrativo<span class="caret"></span></a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="index.php?m=usu">Usuarios</a></li>
-                                    <li><a href="index.php?m=per">Perfiles</a></li>
-                                    <li><a href="index.php?m=ter">Terceros</a></li>
-                                    <li><a href="index.php?m=prov">Proveedores</a></li>
-                                    <li><a href="index.php?m=prod">Productos</a></li>
+                                    <li><a href="index.php?m=car"><span class="icon">Cargos</span></a></li>
+                                    <li><a href="index.php?m=ciu"><span class="icon">Ciudades</span></a></li>
+                                    <li><a href="index.php?m=cli"><span class="icon">Clientes</span></a></li>
+                                    <li><a href="index.php?m=con"><span class="icon">Conceptos</span></a></li>
+                                    <li><a href="index.php?m=emple"><span class="icon">Empleados</span></a></li>
+                                    <li><a href="index.php?m=empre"><span class="icon">Empresas</span></a></li>
+                                    <li><a href="index.php?m=fac"><span class="icon">Facturas</span></a></li>
+                                    <li><a href="index.php?m=inv"><span class="icon">Inventarios</span></a></li>
+                                    <li><a href="index.php?m=per"><span class="icon icon-user-tie"> Perfiles</span></a></li>
+                                    <li><a href="index.php?m=prod"><span class="icon icon-cart"> Productos</span></a></li>
+                                    <li><a href="index.php?m=prof"><span class="icon">Productos Facturas</span></a></li>
+                                    <li><a href="index.php?m=prov"><span class="icon icon-man-woman"> Proveedores</span></a></li>
+                                    <li><a href="index.php?m=suc"><span class="icon">Sucursales</span></a></li>
+                                    <li><a href="index.php?m=ter"><span class="icon icon-accessibility"> Terceros</span></a></li>
+                                    <li><a href="index.php?m=ubi"><span class="icon">Ubicaciones</span></a></li>
+                                    <li><a href="index.php?m=usu"><span class="icon icon-user"> Usuarios</span></a></li>
                                 </ul>	
                             </li>
                             <li>

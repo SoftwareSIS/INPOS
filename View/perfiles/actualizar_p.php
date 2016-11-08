@@ -5,11 +5,17 @@
                 <?php foreach ($query as $dato): endforeach; ?>
                 <tr>
                     <th><label for="id">ID:</label></th>
-                    <td><input type='text' name="txtID" class="form-control " placeholder="Ingrese Su ID" value="<?php echo $dato[0]; ?>" readonly="readonly"></td>
+                    <td><input type='text' id="txtID" name="txtID" class="form-control " 
+                               placeholder="Ingrese Su ID" value="<?php echo $dato[0]; ?>" readonly="readonly"></td>
                 </tr>
                 <tr>
                     <th><label for="des">Descripcion:</label></th>
-                    <td><input type='text' name="txtDescripcion" class="form-control" placeholder="Descripcion Perfil" value="<?php echo $dato[1]; ?>"></td>
+                    <td><input type='text' id="txtDescripcion" name="txtDescripcion" class="form-control" 
+                               placeholder="Descripcion Perfil"  onkeyup="validarText('txtDescripcion',
+                                               'Ingrese Una Descripcion', 'Caracter No Valido, Campo De Texto')" 
+                               value="<?php echo $dato[1]; ?>">
+                        <span class="help-block"></span>
+                    </td>
                 </tr>
             </table>
         </div>

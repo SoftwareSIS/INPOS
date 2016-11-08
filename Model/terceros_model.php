@@ -11,11 +11,16 @@ class terceros_model {
     }
 
     function get() {
-        $query = $this->DB->query("SELECT * FROM terceros t JOIN ciudades c on t.id_ciudad = c.id_ciudad");
+        $query = mysqli_query($this->DB, "SELECT * FROM terceros t "
+                . "JOIN ciudades c on t.id_ciudad = c.id_ciudad ORDER BY id_tercero");
         while ($fila = mysqli_fetch_array($query)) {
             $this->consulta[] = $fila;
         }
-        return $this->consulta;
+        if (!$query) {
+            die("Error al consultar Registros (Terceros)" . $query . "Codigo: " . mysqli_errno($this->DB));
+        } else {
+            return $this->consulta;
+        }
     }
 
 }
