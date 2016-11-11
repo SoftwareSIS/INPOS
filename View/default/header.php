@@ -20,7 +20,7 @@
                             <li class="dropdown">
                                 <a class="dropdown-toggle" data-toggle="dropdown">Administrativo<span class="caret"></span></a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="index.php?m=car"><span class="icon">Cargos</span></a></li>
+                                    <li><a href="index.php?m=carg"><span class="icon">Cargos</span></a></li>
                                     <li><a href="index.php?m=ciu"><span class="icon">Ciudades</span></a></li>
                                     <li><a href="index.php?m=cli"><span class="icon">Clientes</span></a></li>
                                     <li><a href="index.php?m=con"><span class="icon">Conceptos</span></a></li>

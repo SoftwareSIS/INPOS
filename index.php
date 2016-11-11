@@ -160,6 +160,39 @@ if (isset($_REQUEST["m"])) {
                     }
                 }
             }
+            
+            
+            
+            case "carg":
+            require_once 'Controller/cargos_controller.php';
+            $controller = new cargos_controller();
+            if (isset($_REQUEST["c"])) {
+                $metodoCAR = $_REQUEST["c"];
+                if (method_exists($controller, $metodoCAR)) {
+                    $controller->$metodoCAR();
+                    break;
+                }
+            } else {
+                if (isset($_REQUEST["id"])) {
+                    $id = $_REQUEST["id"];
+                    $controller->actualizar_car($id);
+                    break;
+                } else {
+                    if (isset($_REQUEST["cd"])) {
+                        $controller->crear_car();
+                        break;
+                    } else {
+                        if (isset($_REQUEST["eli"])) {
+                            $eli = $_REQUEST["eli"];
+                            $controller->eliminar_car($eli);
+                            break;
+                        } else {
+                            $controller->index_car();
+                            break;
+                        }
+                    }
+                }
+            }
     }
 } else {
     require 'Estyle/bootstrap-3.3.7-dist/css/Estilo_B.php';
