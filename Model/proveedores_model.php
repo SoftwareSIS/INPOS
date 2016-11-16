@@ -13,9 +13,9 @@ class proveedores_model {
     function get_pr() {
         $query = mysqli_query($this->DB, "SELECT p.id_nit, t.nombre, p.dir_factura, p.estado "
                 . "FROM proveedores p "
-                . "INNER JOIN terceros t ON p.id_nit = t.id_tercero"
+                . "INNER JOIN terceros t ON p.id_nit = t.id_tercero "
                 . "ORDER BY id_nit");
-
+        
         while ($filas = mysqli_fetch_array($query)) {
             $this->consulta[] = $filas;
         }
