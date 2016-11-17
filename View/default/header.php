@@ -24,7 +24,7 @@
                                     <li><a href="index.php?m=ciu"><span class="icon">Ciudades</span></a></li>
                                     <li><a href="index.php?m=cli"><span class="icon">Clientes</span></a></li>
                                     <li><a href="index.php?m=con"><span class="icon">Conceptos</span></a></li>
-                                    <li><a href="index.php?m=emple"><span class="icon icon-users"> Empleados</span></a></li>
+                                    <li><a href="index.php?m=emple"><span class="icon">Empleados</span></a></li>
                                     <li><a href="index.php?m=empre"><span class="icon">Empresas</span></a></li>
                                     <li><a href="index.php?m=fac"><span class="icon">Facturas</span></a></li>
                                     <li><a href="index.php?m=inv"><span class="icon">Inventarios</span></a></li>

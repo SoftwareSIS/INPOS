@@ -31,15 +31,11 @@ class perfiles_model {
         if (!$sql) {
             require_once 'Controller/perfiles_controller.php';
             $this->perfiles_controller = new perfiles_controller();
-            if (mysqli_errno($this->DB) == 1452) {
-                $this->perfiles_controller->error_1452();
+            if (mysqli_errno($this->DB) == 1062) {
+                $this->perfiles_controller->error();
             } else {
-                if (mysqli_errno($this->DB) == 1062) {
-                    $this->perfiles_controller->error_1062();
-                } else {
-                    if (mysqli_errno($this->DB) != 1452 || mysqli_errno($this->DB) != 1062) {
-                        die("Error al Guardar (Perfiles)" . " " . $query . " " . "Codigo:  " . mysqli_errno($this->DB));
-                    }
+                if (mysqli_errno($this->DB) != 1062) {
+                    die("Error al Guardar (Perfiles)" . $query . "Codigo:  " . mysqli_errno($this->DB));
                 }
             }
         } else {

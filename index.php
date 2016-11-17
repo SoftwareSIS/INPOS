@@ -160,10 +160,10 @@ if (isset($_REQUEST["m"])) {
                     }
                 }
             }
-
-
-
-        case "carg":
+            
+            
+            
+            case "carg":
             require_once 'Controller/cargos_controller.php';
             $controller = new cargos_controller();
             if (isset($_REQUEST["c"])) {
@@ -188,37 +188,6 @@ if (isset($_REQUEST["m"])) {
                             break;
                         } else {
                             $controller->index_car();
-                            break;
-                        }
-                    }
-                }
-            }
-
-        case "emple":
-            require_once 'Controller/empleados_controller.php';
-            $controller = new empleados_controller();
-            if (isset($_REQUEST['c'])) {
-                $metodoEMPLE = $_REQUEST['c'];
-                if (method_exists($controller, $metodoEMPLE)) {
-                    $controller->$metodoEMPLE;
-                    break;
-                }
-            } else {
-                if (isset($_REQUEST['id'])) {
-                    $id = $_REQUEST['id'];
-                    //Form Actualizar
-                    break;
-                } else {
-                    if (isset($_REQUEST['cd'])) {
-                        //Form Creación
-                        break;
-                    } else {
-                        if (isset($_REQUEST['eli'])) {
-                            $eli = $_REQUEST['eli'];
-                            //Form Eliminar
-                            break;
-                        } else {
-                            $controller->index_emple();
                             break;
                         }
                     }

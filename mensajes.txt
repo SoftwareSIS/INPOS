@@ -7,6 +7,3 @@ Mensajes campo Texto
 1. Ingrese Un ###
 2. Caracter No Valido, Campo De Texto
 
-Encriptacion
-$salt = '$pass$/';
-$Variable = md5(sha1($salt . $campo a encriptar));

@@ -59,13 +59,7 @@ class perfiles_controller {
         $this->index_p();
     }
 
-    function error_1452() {
-        require_once 'View/default/header.php';
-        require_once 'View/perfiles/error_1452.php';
-        require_once 'View/default/footer.php';
-    }
-
-    function error_1062() {
+    function error() {
         require_once 'View/default/header.php';
         require_once 'View/perfiles/error_1062.php';
         require_once 'View/default/footer.php';

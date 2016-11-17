@@ -30,13 +30,11 @@ class usuarios_model {
     }
 
     function guardar_u($data) {
-        $salt = '$pass$/';
-        $en = md5(sha1($salt . $data['clave']));
         $sql = mysqli_query($this->DB, "INSERT INTO usuarios VALUES "
                 . "('" . $data['id_usu'] . "', "
                 . "'" . $data['nombre'] . "', "
                 . "'" . $data['apellido'] . "', "
-                . "'" . $en . "', "
+                . "'" . $data['clave'] . "', "
                 . "'" . $data['id_perf'] . "', "
                 . "'" . $data['estado'] . "')");
 
@@ -44,14 +42,10 @@ class usuarios_model {
             require_once 'Controller/usuarios_controller.php';
             $this->usuario_controller = new usuarios_controller();
             if (mysqli_errno($this->DB) == 1452) {
-                $this->usuario_controller->error_1452();
+                $this->usuario_controller->error();
             } else {
-                if (mysqli_errno($this->DB) == 1062) {
-                    $this->usuario_controller->error_1062();
-                } else {
-                    if (mysqli_errno($this->DB) != 1452 || mysqli_errno($this->DB) != 1062) {
-                        die("Error al Guardar (Usuarios)" . $sql . "Codigo: " . mysqli_errno($this->DB));
-                    }
+                if (mysqli_errno($this->DB) != 1452) {
+                    die("Error al Guardar (Usuarios)" . $sql . "Codigo: " . mysqli_errno($this->DB));
                 }
             }
         } else {
@@ -60,8 +54,7 @@ class usuarios_model {
     }
 
     function actualizar_u($data) {
-        $salt = '$pass$/';
-        $en = md5(sha1($salt . $data['clave']));
+
         if ($data['clave'] == "") {
             $sql = mysqli_query($this->DB, "UPDATE usuarios SET "
                     . "nombre = '" . $data['nombre'] . "', "
@@ -73,7 +66,7 @@ class usuarios_model {
             $sql = mysqli_query($this->DB, "UPDATE usuarios SET "
                     . "nombre = '" . $data['nombre'] . "', "
                     . "apellido = '" . $data['apellido'] . "', "
-                    . "clave = '" . $en . "', "
+                    . "clave = '" . $data["clave"] . "', "
                     . "id_perf = '" . $data["id_perf"] . "', "
                     . "estado = '" . $data['estado'] . "' "
                     . "WHERE id_usu = '" . $data["id_usu"] . "'");
