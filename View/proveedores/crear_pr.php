@@ -4,7 +4,8 @@
             <table class="table table-condensed table-hover">
                 <tr>
                     <th><label for="doc">Nit:</label></th>
-                    <td><input type='text' name="txtNit" class="form-control " placeholder="Ingrese Nit"></td>
+                    <td><input type='text' name="txtNit" class="form-control " placeholder="Ingrese Nit"
+                               pattern="[0-9]{1,100}" required="required" title="Campo de solo Numero"></td>
                 </tr>
                 <tr>
                     <th><label for="fac">Direccion De Facturación:</label></th>

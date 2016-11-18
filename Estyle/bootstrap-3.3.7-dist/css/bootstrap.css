@@ -2271,9 +2271,9 @@ th {
 .table > thead > tr > td,
 .table > tbody > tr > td,
 .table > tfoot > tr > td {
-    padding: 2px; // Este fue modificado Orignal 8
+    padding: 2px; 
     line-height: 1.42857143;
-    vertical-align: central; // Este fue modificado Orignal Top
+    vertical-align: central; 
     border-top: 1px solid #ddd;
 }
 .table > thead > tr > th {
