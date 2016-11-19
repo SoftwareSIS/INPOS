@@ -18,5 +18,5 @@
             <?php endforeach; ?>
         </tbody>
     </table>
-    <a href="index.php?m=ciu&cd" class="btn btn-primary"><span class="icon icon-user-plus"></span> Crear Cargos</a>
+    <a href="index.php?m=ciu&cd" class="btn btn-primary"><span class="icon icon-user-plus"></span> Crear Ciudad</a>
     <!--<a href="#CrearU" class="btn btn-primary" data-toggle="modal"><span class="icon icon-user-plus user"></span> Crear Usuario</a>-->

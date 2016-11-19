@@ -8,7 +8,7 @@
                     <td><input type='text' name="txtNit" class="form-control " value="<?php echo $dato[0]; ?>" readonly="readonly"></td>
                 </tr>
                 <tr>
-                    <th><label for="fac">Direccion De Facturación:</label></th>
+                    <th><label for="fac">Descuento:</label></th>
                     <td><input type='text' name="txtFactura" class="form-control" placeholder="Factura" value="<?php echo $dato[1]; ?>"></td>
                 </tr>
                 <tr>
@@ -27,6 +27,6 @@
             </table>
         </div>
         <button type="submit" class="btn btn-primary" id="btnAceptar">Aceptar</button>
-        <button type="button" class="btn btn-default" onclick="location.href = 'index.php?m=prov'">Cancelar</button>
+        <button type="button" class="btn btn-default" onclick="location.href = 'index.php?m=cli'">Cancelar</button>
     </div>
 </form>

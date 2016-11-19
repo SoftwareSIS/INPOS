@@ -7,7 +7,7 @@
                 <thead>
                     <tr>
                         <th>Nit</th>
-                        <th>Factura</th>
+                        <th>Descuento</th>
                         <th>Estado</th>
                     </tr>
                 </thead>
@@ -22,7 +22,7 @@
                 </tbody>
             </table>
             <button type="submit" class="btn btn-primary">Eiminar</button>
-            <a href="index.php?m=prov" class="btn btn-default">Cancelar</a>
+            <a href="index.php?m=cli" class="btn btn-default">Cancelar</a>
         </div>
     </div>
 </form>
