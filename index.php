@@ -134,27 +134,58 @@ if (isset($_REQUEST["m"])) {
             require_once 'Controller/terceros_controller.php';
             $controller = new terceros_controller();
             if (isset($_REQUEST["c"])) {
-                $metodoPRO = $_REQUEST["c"];
-                if (method_exists($controller, $metodoPRO)) {
-                    $controller->$metodoPRO();
+                $metodoTER = $_REQUEST["c"];
+                if (method_exists($controller, $metodoTER)) {
+                    $controller->$metodoTER();
                     break;
                 }
             } else {
                 if (isset($_REQUEST["id"])) {
                     $id = $_REQUEST["id"];
-                    $controller->actualizar_pro($id);
+                    $controller->actualizar_ter($id);
                     break;
                 } else {
                     if (isset($_REQUEST["cd"])) {
-                        $controller->crear();
+                        $controller->crear_ter();
                         break;
                     } else {
                         if (isset($_REQUEST["eli"])) {
                             $eli = $_REQUEST["eli"];
-                            $controller->eliminar_pro($eli);
+                            $controller->eliminar_ter($eli);
                             break;
                         } else {
-                            $controller->index();
+                            $controller->index_ter();
+                            break;
+                        }
+                    }
+                }
+            }
+            
+            case "ciu":
+            require_once 'Controller/ciudades_controller.php';
+            $controller = new ciudades_controller();
+            if (isset($_REQUEST["c"])) {
+                $metodoCIU = $_REQUEST["c"];
+                if (method_exists($controller, $metodoCIU)) {
+                    $controller->$metodoCIU();
+                    break;
+                }
+            } else {
+                if (isset($_REQUEST["id"])) {
+                    $id = $_REQUEST["id"];
+                    $controller->actualizar_ciu($id);
+                    break;
+                } else {
+                    if (isset($_REQUEST["cd"])) {
+                        $controller->crear_ciu();
+                        break;
+                    } else {
+                        if (isset($_REQUEST["eli"])) {
+                            $eli = $_REQUEST["eli"];
+                            $controller->eliminar_ciu($eli);
+                            break;
+                        } else {
+                            $controller->index_ciu();
                             break;
                         }
                     }

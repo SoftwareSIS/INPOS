@@ -13,17 +13,70 @@ class terceros_controller {
         $this->ciudades_model= new ciudades_model();
     }
     
-    function index() {
-        $query = $this->terceros_model->get();
+    function index_ter() {
+        $query = $this->terceros_model->get_ter();
         require_once 'View/default/header.php';
-        require_once 'View/terceros/index.php';
+        require_once 'View/terceros/index_ter.php';
         require_once 'View/default/footer.php';
     }
     
-    function crear(){
-        $ciu = $this->ciudades_model->get();
+    function crear_ter(){
+        $ciu = $this->ciudades_model->get_ciu();
         require_once 'View/default/header.php';
-        require_once 'View/terceros/crear.php';
+        require_once 'View/terceros/crear_ter.php';
         require_once 'View/default/footer.php';
     }
+
+    function actualizar_ter($id) {
+        $query = $this->terceros_model->consulta_ter($id);
+        $ciu = $this->ciudades_model->get_ciu();
+        require_once 'View/default/header.php';
+        require_once 'View/terceros/actualizar_ter.php';
+        require_once 'View/default/footer.php';
+    }
+
+    function eliminar_ter($id) {
+        $query = $this->terceros_model->consulta_ter($id);
+        require_once 'View/default/header.php';
+        require_once 'View/terceros/eliminar_ter.php';
+        require_once 'View/default/footer.php';
+    }
+
+    function guardarTER() {
+        $data['id_tercero'] = $_REQUEST['txtID'];
+        $data['nombre'] = $_REQUEST['txtNombre'];
+        $data['direccion'] = $_REQUEST['txtDireccion'];
+        $data['telefono'] = $_REQUEST['txtTelefono'];
+        $data['correo'] = $_REQUEST['txtCorreo'];
+        $data['id_ciudad'] = $_REQUEST['cbCiudad'];
+
+        $this->terceros_model->guardar_ter($data);
+    }
+
+    function actualizarTER() {
+        $data['id_tercero'] = $_REQUEST['txtID'];
+        $data['nombre'] = $_REQUEST['txtNombre'];
+        $data['direccion'] = $_REQUEST['txtDireccion'];
+        $data['telefono'] = $_REQUEST['txtTelefono'];
+        $data['correo'] = $_REQUEST['txtCorreo'];
+        $data['id_ciudad'] = $_REQUEST['cbCiudad'];
+        
+        $this->terceros_model->actualizar_ter($data);
+        $this->index_ter();
+    }
+
+    function eliminarTER() {
+        $id = $_REQUEST['txtID'];
+        $this->terceros_model->eliminar_ter($id);
+        $this->index_ter();
+    }
+
+    function error() {
+        require_once 'View/default/header.php';
+        require_once 'View/usuarios/error_1452.php';
+        require_once 'View/default/footer.php';
+    }
+
 }
+
+?>
