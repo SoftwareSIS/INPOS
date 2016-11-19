@@ -1,4 +1,4 @@
-<form action="index.php?m=prov&c=eliminarPR" method="post">
+<form action="index.php?m=prod&c=eliminarPRO" method="post">
     <div class="container">
         <h2 class="modal-title alert-danger actualizar">¿Desea eliminar el siguiente registro?</h2>
         <br>
@@ -6,23 +6,27 @@
             <table class="table table-striped">
                 <thead>
                     <tr>
-                        <th>Nit</th>
-                        <th>Factura</th>
-                        <th>Estado</th>
+                        <th>Producto</th>
+                        <th>Proveedor</th>
+                        <th>Descripcion</th>
+                        <th>Valor</th>
+                        <th>Imagen</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php foreach ($query as $consulta): ?>
                         <tr>
-                            <td><input name="txtNit" readonly = "readonly" value="<?php echo $consulta[0]; ?>"></td>
+                            <td><input name="txtIdProducto" readonly = "readonly" value="<?php echo $consulta[0]; ?>"></td>
                             <td><?php echo $consulta[1]; ?></td>
                             <td><?php echo $consulta[2]; ?></td>
+                            <td><?php echo $consulta[3]; ?></td>
+                            <td><?php echo $consulta[4]; ?></td>
                         </tr>
                     <?php endforeach; ?>
                 </tbody>
             </table>
             <button type="submit" class="btn btn-primary">Eiminar</button>
-            <a href="index.php?m=prov" class="btn btn-default">Cancelar</a>
+            <a href="index.php?m=prod" class="btn btn-default">Cancelar</a>
         </div>
     </div>
 </form>

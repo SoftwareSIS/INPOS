@@ -10,7 +10,7 @@ class productos_controller {
 
     function __construct() {
         $this->productos_model = new productos_model();
-        $this->proveedores_model = new productos_model();
+        $this->proveedores_model = new proveedores_model();
     }
 
     function index_pro() {
@@ -22,7 +22,7 @@ class productos_controller {
 
     function crear_pro() {
         $per = $this->productos_model->get_pro();
-        $pro = $this->proveedores_model->get_pro();
+        $prov = $this->proveedores_model->get_pr();
         require_once 'View/default/header.php';
         require_once 'View/productos/crear_pro.php';
         require_once 'View/default/footer.php';
@@ -30,6 +30,7 @@ class productos_controller {
 
     function actualizar_pro($id) {
         $query = $this->productos_model->consulta_pro($id);
+        $prov = $this->proveedores_model->get_pr();
         require_once 'View/default/header.php';
         require_once 'View/productos/actualizar_pro.php';
         require_once 'View/default/footer.php';
@@ -43,23 +44,29 @@ class productos_controller {
     }
 
     function guardarPRO() {
-        $data['id_perf'] = $_REQUEST['txtID'];
+        $data['id_prod'] = $_REQUEST['txtIdProducto'];
+        $data['id_proveedor'] = $_REQUEST['cbProveedor'];
         $data['descripcion'] = $_REQUEST['txtDescripcion'];
+        $data['valor'] = $_REQUEST['txtValor'];
+        $data['imagen'] = $_REQUEST['txtImagen'];
 
         $this->productos_model->guardar_pro($data);
         $this->index_pro();
     }
 
     function actualizarPRO() {
-        $data['id_perf'] = $_REQUEST['txtID'];
+        $data['id_prod'] = $_REQUEST['txtIdProducto'];
+        $data['id_proveedor'] = $_REQUEST['cbProveedor'];
         $data['descripcion'] = $_REQUEST['txtDescripcion'];
+        $data['valor'] = $_REQUEST['txtValor'];
+        $data['imagen'] = $_REQUEST['txtImagen'];
 
         $this->productos_model->actualizar_pro($data);
         $this->index_pro();
     }
 
     function eliminarPRO() {
-        $id = $_REQUEST['txtID'];
+        $id = $_REQUEST['txtIdProducto'];
         $this->productos_model->eliminar_pro($id);
         $this->index_pro();
     }

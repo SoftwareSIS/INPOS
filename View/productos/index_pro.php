@@ -18,8 +18,8 @@
                     <td><?php echo $consulta[2]; ?></td>
                     <td><?php echo $consulta[3]; ?></td>
                     <td><?php echo $consulta[4]; ?></td>
-                    <td><a href="index.php?m=prov&id=<?php echo $consulta[0]; ?>" class="btn btn-success btn-block"><span class="icon icon-pencil2"></span></a></td>
-                    <td><a href="index.php?m=prov&eli=<?php echo $consulta[0]; ?>" class="btn btn-danger btn-block"><span class="icon icon-bin "></span></a></td>
+                    <td><a href="index.php?m=prod&id=<?php echo $consulta[0]; ?>" class="btn btn-success btn-block"><span class="icon icon-pencil2"></span></a></td>
+                    <td><a href="index.php?m=prod&eli=<?php echo $consulta[0]; ?>" class="btn btn-danger btn-block"><span class="icon icon-bin "></span></a></td>
                 </tr>
             <?php endforeach; ?>
         </tbody>
