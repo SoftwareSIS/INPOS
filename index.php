@@ -224,6 +224,38 @@ if (isset($_REQUEST["m"])) {
                     }
                 }
             }
+            
+            case "cli":
+            require_once 'Controller/clientes_controller.php';
+            $controller = new clientes_controller();
+            if (isset($_REQUEST["c"])) {
+                $metodoCLI = $_REQUEST["c"];
+                if (method_exists($controller, $metodoCLI)) {
+                    $controller->$metodoCLI();
+                    break;
+                }
+            } else {
+                if (isset($_REQUEST["id"])) {
+                    $id = $_REQUEST["id"];
+                    $controller->actualizar_cli($id);
+                    break;
+                } else {
+                    if (isset($_REQUEST["cd"])) {
+                        $controller->crear_cli();
+                        break;
+                    } else {
+                        if (isset($_REQUEST["eli"])) {
+                            $eli = $_REQUEST["eli"];
+                            $controller->eliminar_cli($eli);
+                            break;
+                        } else {
+                            $controller->index_cli();
+                            break;
+                        }
+                    }
+                }
+            }
+            
     }
 } else {
     require 'Estyle/bootstrap-3.3.7-dist/css/Estilo_B.php';
