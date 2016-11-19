@@ -256,6 +256,38 @@ if (isset($_REQUEST["m"])) {
                 }
             }
             
+            case "con":
+            require_once 'Controller/conceptos_controller.php';
+            $controller = new conceptos_controller();
+            if (isset($_REQUEST["c"])) {
+                $metodoCON = $_REQUEST["c"];
+                if (method_exists($controller, $metodoCON)) {
+                    $controller->$metodoCON();
+                    break;
+                }
+            } else {
+                if (isset($_REQUEST["id"])) {
+                    $id = $_REQUEST["id"];
+                    $controller->actualizar_con($id);
+                    break;
+                } else {
+                    if (isset($_REQUEST["cd"])) {
+                        $controller->crear_con();
+                        break;
+                    } else {
+                        if (isset($_REQUEST["eli"])) {
+                            $eli = $_REQUEST["eli"];
+                            $controller->eliminar_con($eli);
+                            break;
+                        } else {
+                            $controller->index_con();
+                            break;
+                        }
+                    }
+                }
+            }
+            
+            
     }
 } else {
     require 'Estyle/bootstrap-3.3.7-dist/css/Estilo_B.php';
