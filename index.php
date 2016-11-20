@@ -161,7 +161,7 @@ if (isset($_REQUEST["m"])) {
                 }
             }
             
-            case "ciu":
+        case "ciu":
             require_once 'Controller/ciudades_controller.php';
             $controller = new ciudades_controller();
             if (isset($_REQUEST["c"])) {
@@ -194,7 +194,7 @@ if (isset($_REQUEST["m"])) {
             
             
             
-            case "carg":
+        case "carg":
             require_once 'Controller/cargos_controller.php';
             $controller = new cargos_controller();
             if (isset($_REQUEST["c"])) {
@@ -225,7 +225,7 @@ if (isset($_REQUEST["m"])) {
                 }
             }
             
-            case "cli":
+        case "cli":
             require_once 'Controller/clientes_controller.php';
             $controller = new clientes_controller();
             if (isset($_REQUEST["c"])) {
@@ -256,7 +256,7 @@ if (isset($_REQUEST["m"])) {
                 }
             }
             
-            case "con":
+        case "con":
             require_once 'Controller/conceptos_controller.php';
             $controller = new conceptos_controller();
             if (isset($_REQUEST["c"])) {
@@ -287,7 +287,36 @@ if (isset($_REQUEST["m"])) {
                 }
             }
             
-            
+        case "empr":
+            require_once 'Controller/empresas_controller.php';
+            $controller = new empresas_controller();
+            if (isset($_REQUEST["c"])) {
+                $metodoEMPR = $_REQUEST["c"];
+                if (method_exists($controller, $metodoEMPR)) {
+                    $controller->$metodoEMPR();
+                    break;
+                }
+            } else {
+                if (isset($_REQUEST["id"])) {
+                    $id = $_REQUEST["id"];
+                    $controller->actualizar_empr($id);
+                    break;
+                } else {
+                    if (isset($_REQUEST["cd"])) {
+                        $controller->crear_empr();
+                        break;
+                    } else {
+                        if (isset($_REQUEST["eli"])) {
+                            $eli = $_REQUEST["eli"];
+                            $controller->eliminar_empr($eli);
+                            break;
+                        } else {
+                            $controller->index_empr();
+                            break;
+                        }
+                    }
+                }
+            }
     }
 } else {
     require 'Estyle/bootstrap-3.3.7-dist/css/Estilo_B.php';
