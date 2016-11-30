@@ -20,7 +20,7 @@
                             <td><?php echo $consulta[1]; ?></td>
                             <td><?php echo $consulta[2]; ?></td>
                             <td><?php echo $consulta[3]; ?></td>
-                            <td><?php echo $consulta[4]; ?></td>
+                            <td><img src="data:image/*;base64,<?php echo base64_encode($consulta[4]); ?>" width="250px" height="200px"></td>
                         </tr>
                     <?php endforeach; ?>
                 </tbody>

@@ -15,6 +15,7 @@ class productos_controller {
 
     function index_pro() {
         $query = $this->productos_model->get_pro();
+
         require_once 'View/default/header.php';
         require_once 'View/productos/index_pro.php';
         require_once 'View/default/footer.php';
@@ -48,7 +49,13 @@ class productos_controller {
         $data['id_proveedor'] = $_REQUEST['cbProveedor'];
         $data['descripcion'] = $_REQUEST['txtDescripcion'];
         $data['valor'] = $_REQUEST['txtValor'];
-        $data['imagen'] = $_REQUEST['txtImagen'];
+        $data['peso'] = $_REQUEST['txtPeso'];
+        $data['dimension'] = $_REQUEST['txtDimensiones'];
+        $data['color'] = $_REQUEST['txtColor'];
+        $data['accesorios'] = $_REQUEST['txtAccesorios'];
+        $data['garantia'] = $_REQUEST['txtGarantia'];
+        $data['material'] = $_REQUEST['txtMateriales'];
+        $data['imagen'] = $imagen = addslashes(file_get_contents($_FILES['txtImagen']['tmp_name']));
 
         $this->productos_model->guardar_pro($data);
         $this->index_pro();
@@ -59,7 +66,13 @@ class productos_controller {
         $data['id_proveedor'] = $_REQUEST['cbProveedor'];
         $data['descripcion'] = $_REQUEST['txtDescripcion'];
         $data['valor'] = $_REQUEST['txtValor'];
-        $data['imagen'] = $_REQUEST['txtImagen'];
+        $data['peso'] = $_REQUEST['txtPeso'];
+        $data['dimension'] = $_REQUEST['txtDimensiones'];
+        $data['color'] = $_REQUEST['txtColor'];
+        $data['accesorios'] = $_REQUEST['txtAccesorios'];
+        $data['garantia'] = $_REQUEST['txtGarantia'];
+        $data['material'] = $_REQUEST['txtMateriales'];
+        $data['imagen'] = $img = addslashes(file_get_contents($_FILES['imagen']['tmp_name']));
 
         $this->productos_model->actualizar_pro($data);
         $this->index_pro();
@@ -69,6 +82,13 @@ class productos_controller {
         $id = $_REQUEST['txtIdProducto'];
         $this->productos_model->eliminar_pro($id);
         $this->index_pro();
+    }
+
+    function detalle_pro($det) {
+        $detalle = $this->productos_model->consulta_pro($det);
+        require_once 'View/default/header.php';
+        require_once 'View/productos/detalles_pro.php';
+        require_once 'View/default/footer.php';
     }
 
 }

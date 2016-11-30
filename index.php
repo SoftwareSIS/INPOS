@@ -123,8 +123,14 @@ if (isset($_REQUEST["m"])) {
                             $controller->eliminar_pro($eli);
                             break;
                         } else {
-                            $controller->index_pro();
-                            break;
+                            if (isset($_REQUEST["det"])) {
+                                $det = $_REQUEST['det'];
+                                $controller->detalle_pro($det);
+                                break;
+                            } else {
+                                $controller->index_pro();
+                                break;
+                            }
                         }
                     }
                 }
@@ -160,7 +166,7 @@ if (isset($_REQUEST["m"])) {
                     }
                 }
             }
-            
+
         case "ciu":
             require_once 'Controller/ciudades_controller.php';
             $controller = new ciudades_controller();
@@ -191,9 +197,9 @@ if (isset($_REQUEST["m"])) {
                     }
                 }
             }
-            
-            
-            
+
+
+
         case "carg":
             require_once 'Controller/cargos_controller.php';
             $controller = new cargos_controller();
@@ -224,7 +230,7 @@ if (isset($_REQUEST["m"])) {
                     }
                 }
             }
-            
+
         case "cli":
             require_once 'Controller/clientes_controller.php';
             $controller = new clientes_controller();
@@ -255,7 +261,7 @@ if (isset($_REQUEST["m"])) {
                     }
                 }
             }
-            
+
         case "con":
             require_once 'Controller/conceptos_controller.php';
             $controller = new conceptos_controller();
@@ -286,7 +292,7 @@ if (isset($_REQUEST["m"])) {
                     }
                 }
             }
-            
+
         case "empr":
             require_once 'Controller/empresas_controller.php';
             $controller = new empresas_controller();

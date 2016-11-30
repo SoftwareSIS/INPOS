@@ -1,4 +1,4 @@
-<form action="index.php?m=prod&c=guardarPRO" method="post">
+<form action="index.php?m=prod&c=guardarPRO" method="POST" enctype="multipart/form-data">
     <div class="actualizar">
         <div class="form-group table-responsive">
             <table class="table table-condensed table-hover">
@@ -27,22 +27,38 @@
                     <td><input type='text' name="txtValor" class="form-control" placeholder="Valor"></td>
                 </tr>
                 <tr>
-                    <th><label for="ima">Imagen:</label></th>
-                    <td><input type='text' name="txtImagen" class="form-control" placeholder="Imagen"></td>
+                    <th><label for="pes">Peso:</label></th>
+                    <td><input type="text" name="txtPeso" class="form-control" placeholder="Peso"></td>
                 </tr>
-                
+                <tr>
+                    <th><label for="dim">Dimensiones:</label></th>
+                    <td><textarea name="txtDimensiones" placeholder="Dimensiones" class="form-control"></textarea></td>
+                </tr>
+                <tr>
+                    <th><label for="color">Color:</label></th>
+                    <td><input type="text" name="txtColor" placeholder="Color" class="form-control"></td>
+                </tr>
+                <tr>
+                    <th><label for="acc">Accesorios:</label></th>
+                    <td><textarea name="txtAccesorios" placeholder="Accesorios" class="form-control"></textarea></td>
+                </tr>
+                <tr>
+                    <th><label for="ga">Garantia:</label></th>
+                    <td><input type="text" name="txtGarantia" name="txtGarantia" placeholder="Garantia" class="form-control"></td>
+                </tr>
+                <tr>
+                    <th><label for="ma">Materiales:</label></th>
+                    <td><textarea name="txtMateriales" placeholder="Materiales" class="form-control"></textarea></td></td>
+                </tr>
+                <tr>
+                    <th><label for="ima">Imagen:</label></th>
+                    <td><input type="file" id="txtImagen" name="txtImagen" accept="image/*"></td>
+                </tr>
             </table>
         </div>
         <button type="submit" class="btn btn-primary" id="btnAceptar">Crear</button>
         <button type="button" class="btn btn-default" onclick="location.href = 'index.php?m=prod'">Cancelar</button>
+        <br>
+        <hr>
     </div>
-</form>   
-
-<!--<tr>
-                 <select class="form-control" name="cbProveedor">
-                    <option>Seleccione Una Opcion...</option>
-                    <?php foreach ($pro as $prove): endforeach; ?>
-                    <option value="<?php echo $prove["id_nit"]; ?>"><?php echo $prove[""]; ?></option>
-                </select>
-
-                </tr>
+</form>

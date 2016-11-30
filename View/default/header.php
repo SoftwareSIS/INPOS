@@ -47,6 +47,9 @@
                             <li>
                                 <a href="#">Contactenos</a>
                             </li>
+                            <li>
+                                <a href="index.php?m=login"><span class="icon icon-users">Inicio De Sesión</span></a>
+                            </li>
                         </ul>
                     </div>
                 </div>
