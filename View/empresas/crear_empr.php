@@ -12,17 +12,6 @@
                     <td><input type='text' name="txtNombre" class="form-control" placeholder="Ingrese el nombre" required></td>
                 </tr>
                 <tr>
-                    <th><label for="nom">Ciudad:</label></th>
-                    <td>
-                        <select class="form-control" name="cbCiudad" required>
-                            <option selected="selected" value="">Seleccione Una Opcion...</option>
-                            <?php foreach ($ciu as $ciudades): ?>
-                                <option value="<?php echo $ciudades["id_ciudad"]; ?>"><?php echo $ciudades["descripcion"]; ?></option>
-                            <?php endforeach; ?>
-                        </select>
-                    </td>
-                </tr>
-                 <tr>
                     <th><label for="nom">Telefono:</label></th>
                     <td><input type='text' name="txtTelefono" class="form-control" placeholder="Ingrese el telefono"  required></td>
                 </tr>

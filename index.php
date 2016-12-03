@@ -323,6 +323,96 @@ if (isset($_REQUEST["m"])) {
                     }
                 }
             }
+
+        case "emple":
+            require_once 'Controller/empleados_controller.php';
+            $controller = new empleados_controller();
+            if (isset($_REQUEST['c'])) {
+                $metodoEMPLE = $_REQUEST['c'];
+                if (method_exists($controller, $metodoEMPLE)) {
+                    $controller->$metodoEMPLE();
+                    break;
+                }
+            } else {
+                if (isset($_REQUEST['id'])) {
+                    $id = $_REQUEST['id'];
+                    $controller->actualizar_emple($id);
+                    break;
+                } else {
+                    if (isset($_REQUEST['cd'])) {
+                        $controller->crear_emple();
+                        break;
+                    } else {
+                        if (isset($_REQUEST['eli'])) {
+                            $eli = $_REQUEST['eli'];
+                            $controller->eliminar_emple($eli);
+                            break;
+                        } else {
+                            $controller->index_emple();
+                            break;
+                        }
+                    }
+                }
+            }
+
+        case "fac":
+            require_once 'Controller/factura_controller.php';
+            $controller = new factura_controller();
+            if (isset($_REQUEST['c'])) {
+                $metodoFAC = $_REQUEST['c'];
+                if (method_exists($controller, $metodoFAC)) {
+                    $controller->$metodoFAC();
+                    break;
+                }
+            } else {
+                $controller->index_fac();
+                break;
+            }
+
+        case "suc":
+            require_once 'Controller/sucursales_controller.php';
+            $controller = new sucursales_controller();
+            if (isset($_REQUEST['c'])) {
+                $metodoSUC = $_REQUEST['c'];
+                if (method_exists($controller, $metodoSUC)) {
+                    $controller->$metodoSUC();
+                    break;
+                }
+            } else {
+                if (isset($_REQUEST['id'])) {
+                    $id = $_REQUEST['id'];
+                    $controller->actualizar_suc($id);
+                    break;
+                } else {
+                    if (isset($_REQUEST['cd'])) {
+                        $controller->crear_suc();
+                        break;
+                    } else {
+                        if (isset($_REQUEST['eli'])) {
+                            $eli = $_REQUEST['eli'];
+                            $controller->eliminar_suc($eli);
+                            break;
+                        } else {
+                            $controller->index_suc();
+                            break;
+                        }
+                    }
+                }
+            }
+
+        case "log":
+            require_once 'Controller/login_controller.php';
+            $controller = new login_controller();
+            if (isset($_REQUEST['c'])) {
+                $metodoLOG = $_REQUEST['c'];
+                if (method_exists($controller, $metodoLOG)) {
+                    $controller->$metodoLOG();
+                    break;
+                }
+            } else {
+                $controller->index_log();
+                break;
+            }
     }
 } else {
     require 'Estyle/bootstrap-3.3.7-dist/css/Estilo_B.php';

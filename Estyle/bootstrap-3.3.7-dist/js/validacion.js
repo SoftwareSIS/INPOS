@@ -114,10 +114,9 @@ function tamaño1(campo, mensaje1) {
     }
 }
 
-function validarPass(campo1, campo2, mensaje1, mensaje2) {
+function validarPass(campo1, mensaje1) {
 
     valor1 = document.getElementById(campo1).value;
-    valor2 = document.getElementById(campo2).value;
 
     if (valor1.length == 0 || valor1.length == null) {
         $("#id" + campo1).remove();
@@ -126,19 +125,11 @@ function validarPass(campo1, campo2, mensaje1, mensaje2) {
         $('#' + campo1).parent().append("<span id='id" + campo1 + "' class='glyphicon glyphicon-remove form-control-feedback'></span>");
         return false;
     } else {
-        if (valor1 != valor2) {
-            $("#id" + campo1).remove();
-            $('#' + campo1).parent().parent().attr("class", "form-group has-error has-feedback");
-            $('#' + campo1).parent().children('span').text(mensaje2).show();
-            $('#' + campo1).parent().append("<span id='id" + campo1 + "' class='glyphicon glyphicon-remove form-control-feedback'></span>");
-            return false;
-        } else {
-            $("#id" + campo1).remove();
-            $('#' + campo1).parent().parent().attr("class", "form-group has-success has-feedback");
-            $('#' + campo1).parent().children('span').hide();
-            $('#' + campo1).parent().append("<span id='id" + campo1 + "' class='glyphicon glyphicon-ok form-control-feedback'></span>");
-            return true;
-        }
+        $("#id" + campo1).remove();
+        $('#' + campo1).parent().parent().attr("class", "form-group has-success has-feedback");
+        $('#' + campo1).parent().children('span').hide();
+        $('#' + campo1).parent().append("<span id='id" + campo1 + "' class='glyphicon glyphicon-ok form-control-feedback'></span>");
+        return true;
     }
 }
 

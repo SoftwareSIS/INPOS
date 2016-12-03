@@ -44,7 +44,6 @@ class empresas_controller {
     function guardarEMPR() {
         $data['id_empresa'] = $_REQUEST['txtIdEmpresa'];
         $data['nombre'] = $_REQUEST['txtNombre'];
-        $data['ciudad'] = $_REQUEST['cbCiudad'];
         $data['telefono'] = $_REQUEST['txtTelefono'];
         $data['email'] = $_REQUEST['txtCorreo'];
         $data['direccion'] = $_REQUEST['txtDireccion'];
@@ -56,7 +55,6 @@ class empresas_controller {
     function actualizarEMPR() {
         $data['id_empresa'] = $_REQUEST['txtIdEmpresa'];
         $data['nombre'] = $_REQUEST['txtNombre'];
-        $data['ciudad'] = $_REQUEST['cbCiudad'];
         $data['telefono'] = $_REQUEST['txtTelefono'];
         $data['email'] = $_REQUEST['txtCorreo'];
         $data['direccion'] = $_REQUEST['txtDireccion'];
