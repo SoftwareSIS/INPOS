@@ -4,6 +4,7 @@ class proveedores_model {
 
     private $DB;
     private $consulta;
+    private $proveedores_controller;
 
     function __construct() {
         $this->DB = conexion::conex();
@@ -63,10 +64,19 @@ class proveedores_model {
 
     function eliminar_pr($id) {
         $sql = mysqli_query($this->DB, "DELETE FROM proveedores WHERE id_nit = '" . $id . "'");
-        if ($this->DB) {
-            mysqli_query($this->DB, $sql);
+
+        if (!$sql) {
+            if (mysqli_errno($this->DB) == 1451) {
+                require_once 'Controller/proveedores_controller.php';
+                $this->proveedores_controller = new proveedores_controller();
+                $this->proveedores_controller->error_1451();
+            } else {
+                if (mysqli_errno($this->DB) != 1451) {
+                    die("Error al Eliminar el registro ('" . $id . "' ) " . $sql . "Codigo: " . mysqli_errno($this->DB));
+                }
+            }
         } else {
-            die("Error al Eliminar el registro ('" . $id . "' ) " . $sql . "Codigo: " . mysqli_errno($this->DB));
+            header("Location: index.php?m=prov");
         }
     }
 

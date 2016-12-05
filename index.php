@@ -262,31 +262,31 @@ if (isset($_REQUEST["m"])) {
                 }
             }
 
-        case "con":
-            require_once 'Controller/conceptos_controller.php';
-            $controller = new conceptos_controller();
+        case "docu":
+            require_once 'Controller/documentos_controller.php';
+            $controller = new documentos_controller();
             if (isset($_REQUEST["c"])) {
-                $metodoCON = $_REQUEST["c"];
-                if (method_exists($controller, $metodoCON)) {
-                    $controller->$metodoCON();
+                $metodoDOCU = $_REQUEST["c"];
+                if (method_exists($controller, $metodoDOCU)) {
+                    $controller->$metodoDOCU();
                     break;
                 }
             } else {
                 if (isset($_REQUEST["id"])) {
                     $id = $_REQUEST["id"];
-                    $controller->actualizar_con($id);
+                    $controller->actualizar_docu($id);
                     break;
                 } else {
                     if (isset($_REQUEST["cd"])) {
-                        $controller->crear_con();
+                        $controller->crear_docu();
                         break;
                     } else {
                         if (isset($_REQUEST["eli"])) {
                             $eli = $_REQUEST["eli"];
-                            $controller->eliminar_con($eli);
+                            $controller->eliminar_docu($eli);
                             break;
                         } else {
-                            $controller->index_con();
+                            $controller->index_docu();
                             break;
                         }
                     }
@@ -398,6 +398,20 @@ if (isset($_REQUEST["m"])) {
                         }
                     }
                 }
+            }
+
+        case "mov":
+            require_once 'Controller/movimientos_controller.php';
+            $controller = new movimientos_controller();
+            if (isset($_REQUEST['c'])) {
+                $metodoMOV = $_REQUEST['c'];
+                if (method_exists($controller, $metodoMOV)) {
+                    $controller->$metodoMOV();
+                    break;
+                }
+            } else {
+                $controller->crearMOV();
+                break;
             }
 
         case "log":

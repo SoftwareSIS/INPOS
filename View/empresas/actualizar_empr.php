@@ -5,7 +5,7 @@
                 <?php foreach ($query as $dato): endforeach; ?>
                 <tr>
                     <th><label for="nom">Id Empresa:</label></th>
-                    <td><input type='text' name="txtIdEmpresa" class="form-control " value="<?php echo $dato[0]; ?>"readonly="readonly"placeholder="Ingrese su ID" 
+                    <td><input type='text' name="txtIdEmpresa" class="form-control " value="<?php echo $dato[0]; ?>" readonly="readonly" placeholder="Ingrese su ID" 
                                pattern="[0-9]{1,100}" required="required" title="Campo de solo Numero"></td>
                 </tr>
                 <tr>

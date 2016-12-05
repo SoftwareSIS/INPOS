@@ -2,15 +2,12 @@
 
 require_once 'Model/proveedores_model.php';
 
-
 class proveedores_controller {
 
     private $proveedores_model;
-    
 
     function __construct() {
         $this->proveedores_model = new proveedores_model();
-        
     }
 
     function index_pr() {
@@ -47,22 +44,25 @@ class proveedores_controller {
         $data['estado'] = $_REQUEST['cbEstado'];
 
         $this->proveedores_model->guardar_pr($data);
-        $this->index_pr();
     }
 
     function actualizarPR() {
         $data['id_nit'] = $_REQUEST['txtNit'];
         $data['dir_factura'] = $_REQUEST['txtFactura'];
         $data['estado'] = $_REQUEST['cbEstado'];
-        
+
         $this->proveedores_model->actualizar_pr($data);
-        $this->index_pr();
     }
 
     function eliminarPR() {
         $id = $_REQUEST['txtNit'];
         $this->proveedores_model->eliminar_pr($id);
-        $this->index_pr();
+    }
+
+    function error_1451() {
+        require_once 'View/default/header.php';
+        require_once 'View/proveedores/error_1451.php';
+        require_once 'View/default/footer.php';
     }
 
 }

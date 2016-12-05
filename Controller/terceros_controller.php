@@ -4,23 +4,23 @@ require_once 'Model/terceros_model.php';
 require_once 'Model/ciudades_model.php';
 
 class terceros_controller {
+
     private $terceros_model;
     private $ciudades_model;
-    
-    
+
     function __construct() {
-        $this->terceros_model= new terceros_model();
-        $this->ciudades_model= new ciudades_model();
+        $this->terceros_model = new terceros_model();
+        $this->ciudades_model = new ciudades_model();
     }
-    
+
     function index_ter() {
         $query = $this->terceros_model->get_ter();
         require_once 'View/default/header.php';
         require_once 'View/terceros/index_ter.php';
         require_once 'View/default/footer.php';
     }
-    
-    function crear_ter(){
+
+    function crear_ter() {
         $ciu = $this->ciudades_model->get_ciu();
         require_once 'View/default/header.php';
         require_once 'View/terceros/crear_ter.php';
@@ -60,20 +60,24 @@ class terceros_controller {
         $data['telefono'] = $_REQUEST['txtTelefono'];
         $data['correo'] = $_REQUEST['txtCorreo'];
         $data['id_ciudad'] = $_REQUEST['cbCiudad'];
-        
+
         $this->terceros_model->actualizar_ter($data);
-        $this->index_ter();
     }
 
     function eliminarTER() {
         $id = $_REQUEST['txtID'];
         $this->terceros_model->eliminar_ter($id);
-        $this->index_ter();
     }
 
-    function error() {
+    function error_1062() {
         require_once 'View/default/header.php';
-        require_once 'View/usuarios/error_1452.php';
+        require_once 'View/terceros/error_1062.php';
+        require_once 'View/default/footer.php';
+    }
+
+    function error_1451() {
+        require_once 'View/default/header.php';
+        require_once 'View/terceros/error_1451.php';
         require_once 'View/default/footer.php';
     }
 

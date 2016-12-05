@@ -1,5 +1,5 @@
 <br>
-<div class="container">
+<div class="container over">
     <table class="table table-hover">
         <thead>
             <tr>
@@ -14,11 +14,13 @@
                 <tr>
                     <td><?php echo $consulta[0]; ?></td>
                     <td><?php echo $consulta[1]; ?></td>
-                    <td><a href="index.php?m=per&id=<?php echo $consulta[0]; ?>" class="btn btn-success btn-block"><span class="icon icon-pencil2"></span></a></td>
-                    <td><a href="index.php?m=per&eli=<?php echo $consulta[0]; ?>" class="btn btn-danger btn-block"><span class="icon icon-bin"></span></a></td>
+                    <td style="width: 10%" ><a href="index.php?m=per&id=<?php echo $consulta[0]; ?>" class="btn btn-success btn-block "><span class="icon icon-pencil2"></span></a></td>
+                    <td style="width: 10%"><a href="index.php?m=per&eli=<?php echo $consulta[0]; ?>" class="btn btn-danger btn-block "><span class="icon icon-bin"></span></a></td>
                 </tr>
             <?php endforeach; ?>
         </tbody>
     </table>
+</div>
+<div class="container">
     <a href="index.php?m=per&cd" class="btn btn-primary"><span class="icon icon-user-plus"></span> Crear Perfil</a>
 </div>

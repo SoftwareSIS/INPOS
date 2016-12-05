@@ -1,4 +1,4 @@
-<form action="index.php?m=con&c=eliminarCON" method="post">
+<form action="index.php?m=docu&c=eliminarDOCU" method="post">
     <div class="container">
         <h2 class="modal-title alert-danger actualizar">¿Desea eliminar el siguiente registro?</h2>
         <br>
@@ -8,19 +8,23 @@
                     <tr>
                         <th>Id Concepto</th>
                         <th>Descripcion</th>
+                        <th>Consecutivo</th>
+                        <th>Tipo</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php foreach ($query as $consulta): ?>
                         <tr>
-                            <td><input name="txtidCon" readonly = "readonly" value="<?php echo $consulta[0]; ?>"></td>
+                            <td><input name="txtID" readonly = "readonly" value="<?php echo $consulta[0]; ?>"></td>
                             <td><?php echo $consulta[1]; ?></td>
+                            <td><?php echo $consulta[2]; ?></td>
+                            <td><?php echo $consulta[3]; ?></td>
                         </tr>
                     <?php endforeach; ?>
                 </tbody>
             </table>
             <button type="submit" class="btn btn-primary">Eiminar</button>
-            <a href="index.php?m=con" class="btn btn-default">Cancelar</a>
+            <a href="index.php?m=docu" class="btn btn-default">Cancelar</a>
         </div>
     </div>
 </form>

@@ -1,5 +1,5 @@
 <br>
-<div class="container">
+<div class="container over">
     <table class="table table-hover">
         <thead>
             <tr>
@@ -28,5 +28,9 @@
             <?php endforeach; ?>
         </tbody>
     </table>
+
+</div>
+<br>
+<div class="container">
     <a href="index.php?m=ter&cd" class="btn btn-primary"><span class="icon icon-user-plus"></span> Crear Tercero</a>
 </div>

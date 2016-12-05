@@ -30,11 +30,12 @@ class usuarios_model {
     }
 
     function guardar_u($data) {
+        $pass = md5(sha1($data['clave']));
         $sql = mysqli_query($this->DB, "INSERT INTO usuarios VALUES "
                 . "('" . $data['id_usu'] . "', "
                 . "'" . $data['nombre'] . "', "
                 . "'" . $data['apellido'] . "', "
-                . "'" . $data['clave'] . "', "
+                . "'" . $pass . "', "
                 . "'" . $data['id_perf'] . "', "
                 . "'" . $data['estado'] . "')");
 
@@ -42,9 +43,11 @@ class usuarios_model {
             require_once 'Controller/usuarios_controller.php';
             $this->usuario_controller = new usuarios_controller();
             if (mysqli_errno($this->DB) == 1452) {
-                $this->usuario_controller->error();
+                $this->usuario_controller->error_1452();
             } else {
-                if (mysqli_errno($this->DB) != 1452) {
+                if (mysqli_errno($this->DB) == 1062) {
+                    $this->usuario_controller->error_1062();
+                } else {
                     die("Error al Guardar (Usuarios)" . $sql . "Codigo: " . mysqli_errno($this->DB));
                 }
             }
@@ -54,7 +57,7 @@ class usuarios_model {
     }
 
     function actualizar_u($data) {
-
+        $pass = md5(sha1($data['clave']));
         if ($data['clave'] == "") {
             $sql = mysqli_query($this->DB, "UPDATE usuarios SET "
                     . "nombre = '" . $data['nombre'] . "', "
@@ -66,7 +69,7 @@ class usuarios_model {
             $sql = mysqli_query($this->DB, "UPDATE usuarios SET "
                     . "nombre = '" . $data['nombre'] . "', "
                     . "apellido = '" . $data['apellido'] . "', "
-                    . "clave = '" . $data["clave"] . "', "
+                    . "clave = '" . $pass . "', "
                     . "id_perf = '" . $data["id_perf"] . "', "
                     . "estado = '" . $data['estado'] . "' "
                     . "WHERE id_usu = '" . $data["id_usu"] . "'");
@@ -75,6 +78,8 @@ class usuarios_model {
         if (!$sql) {
             echo "Error al Actualizar el Usuario ('" . $data['id_usu'] . "')" . $sql . "Codigo: " .
             mysqli_errno($this->DB);
+        } else {
+            header('Location: index.php?m=usu');
         }
     }
 
@@ -105,6 +110,8 @@ class usuarios_model {
 
         if (!$sql) {
             echo "Error al Eliminar el Usuario ('" . $id . "')" . $sql . "Codigo: " . mysqli_errno($this->DB);
+        } else {
+            header('Location: index.php?m=usu');
         }
     }
 

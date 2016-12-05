@@ -1,5 +1,5 @@
 <br>
-<div class="container table-responsive">
+<div class="container table-responsive over">
     <table class="table table-striped">
         <thead>
             <tr>
@@ -26,5 +26,7 @@
             <?php endforeach; ?>
         </tbody>
     </table>
-    <a href="index.php?m=usu&cd" class="btn btn-primary"><span class="icon icon-user-plus"></span> Crear Usuario</a>
-    <!--<a href="#CrearU" class="btn btn-primary" data-toggle="modal"><span class="icon icon-user-plus user"></span> Crear Usuario</a>-->
+</div>
+<div class="container">
+    <a href="index.php?m=usu&cd" class="btn btn-primary"><span class="icon icon-user-plus"></span> Crear Usuario</a>    
+</div>

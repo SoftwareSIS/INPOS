@@ -21,7 +21,6 @@ class login_controller {
         $pass = md5(sha1($_REQUEST['txtClave']));
 
         $this->login_model->get_log($usu, $pass);
-        $this->index_log();
     }
 
 }

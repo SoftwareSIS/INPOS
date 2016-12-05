@@ -1,13 +1,13 @@
 <br>
-<div class="container table-responsive">
+<div class="container table-responsive over">
     <table class="table table-striped">
         <thead>
             <tr>
+                <th>Documento</th>
                 <th>Nombre</th>
                 <th>Cargo</th>
                 <th>Fecha De Ingreso</th>
                 <th>Fecha De Retiro</th>
-                <th>Salario</th>
                 <th>Sucursal</th>
                 <th>Actualizar</th>
                 <th>Eliminar</th>
@@ -28,4 +28,9 @@
             <?php endforeach; ?>
         </tbody>
     </table>
+</div>
+<div class="container">
     <a href="index.php?m=emple&cd" class="btn btn-primary"><span class="icon icon-user-plus"></span> Crear Empleado</a>
+</div>
+
+

@@ -1,14 +1,14 @@
 <br>
-<div class="container">
+<div class="container over">
     <table class="table table-hover">
         <thead>
             <tr>
-                 <th>ID Sucursal</th>
-                 <th>Direccion</th>
-                 <th>Telefono</th>
-                 <th>Estadoo</th>
-                 <th>Ciudad</th>
-                 <th>Empresa</th>
+                <th>ID Sucursal</th>
+                <th>Direccion</th>
+                <th>Telefono</th>
+                <th>Estadoo</th>
+                <th>Ciudad</th>
+                <th>Empresa</th>
             </tr>
         </thead>
         <tbody>
@@ -26,5 +26,7 @@
             <?php endforeach; ?>
         </tbody>
     </table>
-    <a href="index.php?m=suc&cd" class="btn btn-primary"><span class="icon icon-user-plus"></span> Crear Sucursal</a>
+</div>
+<div class="container">
+    <a href="index.php?m=suc&cd" class="btn btn-primary"><span class="icon icon-user-plus"></span> Crear Sucursal</a>    
 </div>

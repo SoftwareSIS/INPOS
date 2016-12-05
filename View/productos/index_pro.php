@@ -1,5 +1,5 @@
 <br>
-<div class="container table-responsive">
+<div class="container table-responsive over">
     <table class="table table-striped">
         <thead>
             <tr>
@@ -24,5 +24,8 @@
             <?php endforeach; ?>
         </tbody>
     </table>
+</div>
+<br>
+<div class="container">
     <a href="index.php?m=prod&cd" class="btn btn-primary"><span class="icon icon-user-plus"></span> Crear Producto</a>
 </div>

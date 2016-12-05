@@ -42,23 +42,14 @@
                         <span class="help-block"></span>
                     </td>
                 </tr>
-                <tr>
-                    <th><label for="cl2" class="control-label">Salario:</label></th>
-                    <td>
-                        <input type='text' id="txtSalario" name="txtSalario" class="form-control" 
-                               placeholder="Salario" >
-                        <span class="help-block"></span>
-                    </td>
-                </tr>
                 <tr class="form-group">
                     <th><label for="per">Sucursal:</label></th>
                     <td>
                         <select class="form-control" name="cbSucursal" id="combo" onkeydown="validarCB('combo', 'Campo Sin Seleccionar')">
                             <option selected="selected" value="">Seleccione Una Opcion...</option>
                             <?php foreach ($sucursal as $suc) : ?>
-                                            <!--<option value="//<?php echo $suc[0]; ?>"><?php echo $suc[1]; ?></option>-->
+                                <option value="<?php echo $suc[0]; ?>"><?php echo $suc[1]; ?></option>
                             <?php endforeach; ?>
-                            <option>Calle 1</option>
                         </select>
                         <span class="help-block"></span>
                     </td>

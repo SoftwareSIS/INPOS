@@ -7,29 +7,34 @@ class login_model {
     private $DB;
     private $consulta;
     private $login_controller;
+    private $prueba;
 
     function __construct() {
         $this->DB = conexion::conex();
         $this->consulta = array();
+        $this->prueba = array();
     }
 
     function get_log($usu, $pass) {
         $query = mysqli_query($this->DB, "SELECT id_usu, clave FROM usuarios");
 
-        $data[] = mysqli_fetch_array($query);
+        while ($row = mysqli_fetch_row($query)) {
+            echo "Documento: " . $row[0];
+            echo "\n Clave" . $row[1];
+        }
 
-        echo 'Valor: ' . $data[0];
-
-        if ($usu == $data[0] && $pass = $data[1]) {
-            echo 'Validacion Correcta';
+        if ($usu == $row[0] && $pass = $row[1]) {
+            echo 'Usuario y Contraseña Correctas';
+            echo 'Datos: ' . $usu;
+            echo 'Datos: ' . $pass;
         } else {
-            echo 'Validacion Incorrecta';
+            echo 'Usuario o Contraseña Incorrecta';
+            echo 'Datos: ' . $usu;
+            echo 'Datos: ' . $pass;
         }
 
         if (!$query) {
             die("Error al validar datos (Usuario)" . $query . " " . "Codigo: " . mysqli_errno($this->DB));
-        } else {
-            echo 'retorno correcto';
         }
     }
 

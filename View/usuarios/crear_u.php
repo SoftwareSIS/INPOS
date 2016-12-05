@@ -5,9 +5,12 @@
                 <tr>
                     <th><label for="doc" class="control-label">Documento:</label></th>
                     <td>
-                        <input type='text' id="txtDocumento" name="txtDocumento" class="form-control" 
-                               placeholder="Ingrese Su Documento" onkeyup="validarN('txtDocumento', 'Ingrese Un Documento',
-                                               'Caracter No Valido, Campo Numerico', 8, 11,'Minimo - Maximo de digitos (8 - 11)')">
+                        <select class="form-control" name="cbDocumento" id="combo" onkeydown="validarCB('combo', 'Campo Sin Seleccionar')">
+                            <option selected="selected" value="">Seleccione Una Opcion...</option>
+                            <?php foreach ($emple as $emp): ?>
+                                <option value="<?php echo $emp[0]; ?>"><?php echo $emp[1]; ?></option>
+                            <?php endforeach; ?>
+                        </select>
                         <span class="help-block"></span>
                     </td>
                 </tr>

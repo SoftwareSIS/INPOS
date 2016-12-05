@@ -1,5 +1,5 @@
 <br>
-<div class="container table-responsive">
+<div class="container table-responsive over">
     <table class="table table-striped">
         <thead>
             <tr>
@@ -18,5 +18,8 @@
             <?php endforeach; ?>
         </tbody>
     </table>
-    <a href="index.php?m=ciu&cd" class="btn btn-primary"><span class="icon icon-user-plus"></span> Crear Ciudad</a>
-    <!--<a href="#CrearU" class="btn btn-primary" data-toggle="modal"><span class="icon icon-user-plus user"></span> Crear Usuario</a>-->
+</div>
+<br>
+<div class="container">
+    <a href="index.php?m=ciu&cd" class="btn btn-primary"><span class="icon icon-user-plus"></span> Crear Ciudad</a>        
+</div>

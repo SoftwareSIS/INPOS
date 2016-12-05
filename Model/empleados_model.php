@@ -16,11 +16,11 @@ class empleados_model {
     function get_emple() {
 
         $sql = mysqli_query($this->DB, "SELECT 
+            t.id_tercero AS Documento,  
             t.nombre AS Nombre, 
             c.descripcion AS Cargo, 
             e.fecha_ingreso AS Fecha_Ingreso, 
             e.fecha_retiro AS Fecha_Retiro, 
-            e.salario AS Salario, 
             s.direccion AS Sucursal 
             FROM empleados e 
             INNER JOIN terceros t ON e.id_empleado = t.id_tercero 
@@ -45,11 +45,20 @@ class empleados_model {
                 . "'" . $data['id_cargo'] . "', "
                 . "'" . $data['fecha_ingreso'] . "', "
                 . "'" . $data['fecha_retiro'] . "', "
-                . "'" . $data['salario'] . "', "
                 . "'" . $data['sucursal'] . "')");
 
         if (!$sql) {
-            die("Error al guardar Registros (Empleado)" . $sql . " " . "Codigo: " . mysqli_error($this->DB));
+            require_once 'Controller/empleados_controller.php';
+            $this->empleados_controller = new empleados_controller();
+            if (mysqli_errno($this->DB) == 1452) {
+                $this->empleados_controller->error_1452();
+            } else {
+                if (mysqli_errno($this->DB) == 1062) {
+                    $this->empleados_controller->error_1062();
+                } else {
+                    die("Error al Guardar (Usuarios)" . $sql . "Codigo: " . mysqli_errno($this->DB));
+                }
+            }
         } else {
             header('Location: index.php?m=emple');
         }
@@ -58,19 +67,33 @@ class empleados_model {
     function actualizar_emple($id) {
         $sql = mysqli_query($this->DB, "SELECT * FROM empleados WHERE id_empleado = '" . $id . "'");
 
+        while ($filas = mysqli_fetch_array($sql)) {
+            $this->consulta[] = $filas;
+        }
+
         if (!$sql) {
             die("Error al Consultar Registros (Empleado)" . $sql . " " . "Codigo: " . mysqli_error($this->DB));
         } else {
-            header('Location: index.php?m=emple');
+            return $this->consulta;
         }
     }
 
-    function eliminar_emple() {
-        
-    }
+    function eliminar_emple($id) {
+        $sql = mysqli_query($this->DB, "SELECT t.id_tercero AS Documento, t.nombre AS Nombre, c.descripcion AS Cargo "
+                . "FROM empleados e "
+                . "INNER JOIN terceros t ON e.id_empleado = t.id_tercero "
+                . "INNER JOIN cargos c ON e.id_cargo = c.id_cargo "
+                . "WHERE id_empleado = '" . $id . "'");
 
-    function crearEMP() {
-        
+        while ($filas = mysqli_fetch_array($sql)) {
+            $this->consulta[] = $filas;
+        }
+
+        if (!$sql) {
+            die("Error al Consultar Registros (Empleado)" . $sql . " " . "Codigo: " . mysqli_error($this->DB));
+        } else {
+            return $this->consulta;
+        }
     }
 
     function actualizarEMP($data) {
@@ -78,7 +101,6 @@ class empleados_model {
                 . "id_cargo = '" . $data['id_cargo'] . "', "
                 . "fecha_ingreso = '" . $data['fecha_ingreso'] . "', "
                 . "fecha_retiro = '" . $data['fecha_retiro'] . "', "
-                . "salario = '" . $data['salario'] . "', "
                 . "sucursal = '" . $data['sucursal'] . "' "
                 . "WHERE id_empleado = '" . $data['id_empleado'] . "'");
 
@@ -89,8 +111,22 @@ class empleados_model {
         }
     }
 
-    function eliminarEMP() {
-        
+    function eliminarEMP($data) {
+        $eli = mysqli_query($this->DB, "DELETE FROM empleados WHERE id_empleado = '" . $data['id_empleado'] . "'");
+
+        if (!$eli) {
+            if (mysqli_errno($this->DB) == 1451) {
+                require_once 'Controller/empleados_controller.php';
+                $this->empleados_controller = new empleados_controller();
+                $this->empleados_controller->error_1451();
+            } else {
+                if (mysqli_errno($this->DB) != 1451) {
+                    die("Error al eliminar Registros (Empleados)" . $eli . " " . "Codigo: " . mysqli_errno($this->DB));
+                }
+            }
+        } else {
+            header('Location:index.php?m=emple');
+        }
     }
 
 }

@@ -2,15 +2,18 @@
 
 require_once 'Model/usuarios_model.php';
 require_once 'Model/perfiles_model.php';
+require_once 'Model/empleados_model.php';
 
 class usuarios_controller {
 
     private $usuarios_model;
     private $perfiles_model;
+    private $empleados_model;
 
     function __construct() {
         $this->usuarios_model = new usuarios_model();
         $this->perfiles_model = new perfiles_model();
+        $this->empleados_model = new empleados_model();
     }
 
     function index_u() {
@@ -22,6 +25,7 @@ class usuarios_controller {
 
     function crear_u() {
         $per = $this->perfiles_model->get_p();
+        $emple = $this->empleados_model->get_emple();
         require_once 'View/default/header.php';
         require_once 'View/usuarios/crear_u.php';
         require_once 'View/default/footer.php';
@@ -43,7 +47,7 @@ class usuarios_controller {
     }
 
     function guardarU() {
-        $data['id_usu'] = $_REQUEST['txtDocumento'];
+        $data['id_usu'] = $_REQUEST['cbDocumento'];
         $data['nombre'] = $_REQUEST['txtNombre'];
         $data['apellido'] = $_REQUEST['txtApellido'];
         $data['clave'] = $_REQUEST['psClave'];
@@ -62,18 +66,22 @@ class usuarios_controller {
         $data['estado'] = $_REQUEST['cbEstado'];
 
         $this->usuarios_model->actualizar_u($data);
-        $this->index_u();
     }
 
     function eliminarU() {
         $id = $_REQUEST['txtDocumento'];
         $this->usuarios_model->eliminar_u($id);
-        $this->index_u();
     }
 
-    function error() {
+    function error_1452() {
         require_once 'View/default/header.php';
         require_once 'View/usuarios/error_1452.php';
+        require_once 'View/default/footer.php';
+    }
+
+    function error_1062() {
+        require_once 'View/default/header.php';
+        require_once 'View/usuarios/error_1062.php';
         require_once 'View/default/footer.php';
     }
 
