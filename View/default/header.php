@@ -45,7 +45,7 @@
                                 <a href="index.php?m=mov">Movimientos</a>
                             </li>
                             <li>
-                                <a href="index.php?m=log"><span class="icon icon-users">Inicio De Sesión</span></a>
+                                <a href="inicio.php"><span class="icon icon-switch"> Cerrar Sesión</span></a>
                             </li>
                         </ul>
                     </div>

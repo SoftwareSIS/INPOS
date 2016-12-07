@@ -1,0 +1,144 @@
+body {
+	font-family: 'Lato', sans-serif; 
+}
+
+img {
+	max-width: 100%;
+}
+.no-lista {
+	margin: 0px;
+	padding: 0px;
+}
+.no-lista li{
+	list-style-type: none; 
+}
+
+.se-gris{
+	background: #eee;
+}
+
+.arriba{
+	vertical-align: top;
+}
+
+.padding-largo{
+	padding: 5px 10px;
+}
+.inline-block{
+	float: none;
+	display: inline-block;
+	margin: -4px;
+}
+.mediano{
+	font-size: 1.5em;
+}
+.retraso1{
+	-webkit-animation-delay: 1s;
+	-moz-animation-delay: 1s;
+	animation-delay: 1s;
+}
+
+.retraso2{
+	-webkit-animation-delay: 2s;
+	-moz-animation-delay: 2s;
+	animation-delay: 2s;
+}
+
+
+.quitar-float{
+	float: none; 
+}
+
+.espacio-arriba{
+	margin-top: 100px; 
+}
+
+
+
+.grande{
+	font-size: 4em;
+}
+
+.mediano{
+	font-size: 3em;
+}
+
+.Anton{
+	font-family: 'Anton', sans-serif;
+}
+ .azul{
+ 	color: #304269
+ }
+ .espacio-derecha{
+ 	margin-right: 1em;
+ }
+
+ .main-header{
+ 	background: #333;
+    color: white;
+    height: 80px;
+    
+    width: 100%;
+    left: 0;
+    top: 0;
+    position: fixed;
+ }
+
+
+.color-empr{
+	background-color: #1a63b0;
+	border: 000;
+}
+
+
+.a{
+ 	color: #F26101
+ }
+
+
+
+/*Ejemplo 2*/
+.ejemplo-2 img {
+transition: all 0.2s ease-in;
+}
+.ejemplo-2 .mascara {
+background-color: rgba(25,96,184, 0.8);
+width: 300px;
+padding: 60px;
+height: 300px;
+opacity: 1;
+transform: translate(300px, 200px) rotate(45deg); /*Rotamos para dar efecto de diagonal y lo movemos por donde queremos que entre.*/
+transition: all 0.5s ease-in-out;
+}
+.ejemplo-2 h2 {
+border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+background: transparent;
+margin: 20px 40px 0px 40px;
+transform: translate(200px, -200px);/*Desplazamos el título arriba a la derecha*/
+transition: all 0.3s ease-in-out;
+}
+.ejemplo-2 p {
+transform: translate(-200px, 200px);/*Desplazamos la descripción abajo a la izquierda*/
+transition: all 0.4s ease-in-out;
+}
+.ejemplo-2 a.link {
+transform: translate(0px, 100px);/*Desplazamos el link para abajo*/
+transition: all 0.3s 0.1s ease-in-out;
+}
+
+.ejemplo-2:hover .mascara {
+opacity:1;
+transform: translate(-96px, -120px) rotate(45deg);
+}
+.ejemplo-2:hover h2 {
+transform: translate(0px,0px);
+transition-delay: 0.3s;
+}
+.ejemplo-2:hover p {
+transform: translate(0px,0px);
+transition-delay: 0.4s;
+}
+.ejemplo-2:hover a.link {
+transform: translate(0px,0px);
+transition-delay: 0.5s;
+}

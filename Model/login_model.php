@@ -16,21 +16,20 @@ class login_model {
     }
 
     function get_log($usu, $pass) {
-        $query = mysqli_query($this->DB, "SELECT id_usu, clave FROM usuarios");
+        $query = mysqli_query($this->DB, "SELECT id_usu, clave "
+                . "FROM usuarios "
+                . "WHERE id_usu = '" . $usu . "' AND clave = '" . $pass . "'");
 
-        while ($row = mysqli_fetch_row($query)) {
-            echo "Documento: " . $row[0];
-            echo "\n Clave" . $row[1];
-        }
-
-        if ($usu == $row[0] && $pass = $row[1]) {
-            echo 'Usuario y Contraseña Correctas';
-            echo 'Datos: ' . $usu;
-            echo 'Datos: ' . $pass;
+        if ($query->num_rows > 0) {
+            echo'<script type="text/javascript">
+                alert("Bienvenid@ ");
+                window.location="index.php"
+                </script>';
         } else {
-            echo 'Usuario o Contraseña Incorrecta';
-            echo 'Datos: ' . $usu;
-            echo 'Datos: ' . $pass;
+            echo'<script type="text/javascript">
+                alert("Usuario o Contraseña Incorrecta");
+                window.location="login.php"
+                </script>';
         }
 
         if (!$query) {
@@ -39,5 +38,4 @@ class login_model {
     }
 
 }
-
 ?>
