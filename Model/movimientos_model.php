@@ -6,6 +6,7 @@ class movimientos_model {
 
     private $DB;
     private $consulta;
+    private $captura;
     private $movimientos_controller;
 
     function __construct() {
@@ -30,15 +31,18 @@ class movimientos_model {
 
     function guardarMOV($data) {
         $sql = mysqli_query($this->DB, "INSERT INTO movimientos VALUES ("
-                . "'" . $data['fecha_movimiento'] . "', "
-                . "'" . $data['id_sucursal'] . "', "
-                . "'" . $data['id_documento'] . "', "
-                . "'" . $data['consecutivo'] . "', "
-                . "'" . $data['id_prod'] . "', "
-                . "'" . $data['cantidad'] . "')");
+                . "'" . $data['Fecha'] . "', "
+                . "'" . $data['Sucursal'] . "', "
+                . "'" . $data['Documento'] . "', "
+                . "'" . $data['Consecutivo'] . "', "
+                . "(SELECT id_prod FROM productos WHERE descripcion = '" . $data['Producto'] . "'), "
+                . "'" . $data['Cantidad'] . "')");
+
 
         if (!$sql) {
-            die("Error al guardar Registros (Movimientos)" . " " . $sql . " " . "Codigo: " . mysqli_errno($this->DB));
+            die("Error al guardar Registros (Movimientos)" . " " . $sql . " " . "Codigo: " . mysqli_error($this->DB));
+        } else {
+            header("Location: index.php?m=mov");
         }
     }
 

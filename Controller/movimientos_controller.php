@@ -39,6 +39,23 @@ class movimientos_controller {
         $this->movimientos_model->guardarMOV($data);
     }
 
+    function capturarMOV() {
+        $datos = unserialize(stripslashes($_REQUEST['txtProducto']));
+
+
+        foreach ($datos as $dat) {
+            $data['Fecha'] = $dat['Fecha'];
+            $data['Sucursal'] = $dat['Sucursal'];
+            $data['Documento'] = $dat['Documento'];
+            $data['Consecutivo'] = $dat['Consecutivo'];
+            $data['Producto'] = $dat['Producto'];
+            $data['Cantidad'] = $dat['Cantidad'];
+
+            print_r($data);
+            $this->movimientos_model->guardarMOV($data);
+        }
+    }
+
 }
 
 ?>
