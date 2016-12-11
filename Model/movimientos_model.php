@@ -38,7 +38,6 @@ class movimientos_model {
                 . "(SELECT id_prod FROM productos WHERE descripcion = '" . $data['Producto'] . "'), "
                 . "'" . $data['Cantidad'] . "')");
 
-
         if (!$sql) {
             die("Error al guardar Registros (Movimientos)" . " " . $sql . " " . "Codigo: " . mysqli_error($this->DB));
         } else {

@@ -20,8 +20,8 @@
                     <td>
                         <select class="form-control" name="cbTipo">
                             <option value="" selected="selected">Seleccione Una Opcion...</option>
-                            <option <?php echo ($dato[3] == 'A') ? 'selected="selected"' : ''; ?>>A</option>
-                            <option <?php echo ($dato[3] == 'B') ? 'selected="selected"' : ''; ?>>B</option>
+                            <option <?php echo ($dato[3] == 'Entrada') ? 'selected="selected"' : ''; ?>>Entrada</option>
+                            <option <?php echo ($dato[3] == 'Salida') ? 'selected="selected"' : ''; ?>>Salida</option>
                         </select>
                     </td>
                 </tr>

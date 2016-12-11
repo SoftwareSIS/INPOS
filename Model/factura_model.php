@@ -15,32 +15,12 @@ class factura_model {
         $this->consultaD = array();
     }
 
-    function get_facC() {
-        $cab = mysqli_query($this->DB, "SELECT * FROM facturas ORDER BY id_factura");
-
-        while ($filas = mysqli_fetch_array($cab)) {
-
-            $this->consultaC[] = $filas;
-        }
-
-        if (!$cab) {
-            die("Error al consultar Registros (Factura Cabecera)" . $cab . " " . "Codigo: " . mysqli_errno($this->DB));
-        } else {
-            return $this->consultaC;
-        }
-    }
-
-    function get_facD() {
-        $det = mysqli_query($this->DB, "SELECT "
-                . "f.id_factura, "
-                . "p.descripsion AS Producto, "
-                . "f.cantidad, "
-                . "f.descuento, "
-                . "f.iva, "
-                . "f.valor, "
-                . "f.item, "
-                . "f.valor_total "
-                . "INNER JOIN productos p ON f.id_prod = p.id_prod");
+    function get_fac() {
+        $det = mysqli_query($this->DB, "SELECT f.id_factura, f.fecha_fact, f.id_cliente, 
+            t.nombre, pf.cantidad,pf.descuento,pf.iva,pf.valor,pf.item,pf.valor_total 
+            FROM facturas f 
+            INNER JOIN terceros t ON f.id_empleado = t.id_tercero 
+            INNER JOIN productos_facturas pf ON f.id_factura = pf.id_factura");
 
         while ($filas = mysqli_fetch_array($det)) {
 

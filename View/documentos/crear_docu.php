@@ -19,8 +19,8 @@
                     <td>
                         <select class="form-control" name="cbTipo">
                             <option value="" selected="selected">Seleccione Una Opcion...</option>
-                            <option>A</option>
-                            <option>B</option>
+                            <option>Entrada</option>
+                            <option>Salida</option>
                         </select>
                     </td>
                 </tr>

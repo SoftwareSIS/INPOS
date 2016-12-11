@@ -423,7 +423,7 @@ if (isset($_REQUEST["m"])) {
                     $controller->$metodoLOG();
                     break;
                 }
-            } 
+            }
     }
 } else {
     require 'Estyle/bootstrap-3.3.7-dist/css/Estilo_B.php';

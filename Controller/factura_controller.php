@@ -11,10 +11,9 @@ class factura_controller {
     }
 
     function index_fac() {
-        $cab = $this->factura_model->get_facC();
-        $det = $this->factura_model->get_facD();
+        $query = $this->factura_model->get_fac();
         require_once 'View/default/header.php';
-        require_once 'View/factura/index_factura.php';
+        require_once 'View/factura/index_fac.php';
         require_once 'View/default/footer.php';
     }
 

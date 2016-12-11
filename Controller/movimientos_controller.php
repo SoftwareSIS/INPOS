@@ -51,7 +51,6 @@ class movimientos_controller {
             $data['Producto'] = $dat['Producto'];
             $data['Cantidad'] = $dat['Cantidad'];
 
-            print_r($data);
             $this->movimientos_model->guardarMOV($data);
         }
     }

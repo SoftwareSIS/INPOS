@@ -41,8 +41,16 @@ if (!isset($_REQUEST['txtProducto'])) {
                         <select class="form-control" name="cbSucursal">
                             <option value="" selected="selected">Seleccione Una Opcion...</option>
                             <?php foreach ($suc as $sucursal) : ?>
-                                <option value="<?php echo $sucursal[0]; ?>"><?php echo $sucursal[1]; ?></option>
-                            <?php endforeach; ?>
+                                <option <?php
+                                if ($datos == null) {
+                                    
+                                } else {
+                                    if ($datos[0]['Sucursal'] == $sucursal[0]) {
+                                        echo 'selected="selected"';
+                                    }
+                                }
+                                ?> value="<?php echo $sucursal[0]; ?>"><?php echo $sucursal[1]; ?></option>
+                                <?php endforeach; ?>
                         </select>
                     </td>
                 </tr>
@@ -52,14 +60,29 @@ if (!isset($_REQUEST['txtProducto'])) {
                         <select class="form-control" name="cbDocumento">
                             <option value="" selected="selected">Seleccione Una Opcion...</option>
                             <?php foreach ($docu as $documento) : ?>
-                                <option value="<?php echo $documento[0]; ?>"><?php echo $documento[1]; ?></option>
-                            <?php endforeach; ?>
+                                <option <?php
+                                if ($datos == null) {
+                                    
+                                } else {
+                                    if ($datos[0]['Documento'] == $documento[0]) {
+                                        echo 'selected="selected"';
+                                    }
+                                }
+                                ?> value="<?php echo $documento[0]; ?>"><?php echo $documento[1]; ?></option>
+                                <?php endforeach; ?>
                         </select>
                     </td>
                 </tr>
                 <tr>
                     <th><label for="doc">Consecutivo:</label></th>
-                    <td><input type="number" name="txtConsecutivo" class="form-control" placeholder="Consecutivo"></td>
+                    <td><input type="number" name="txtConsecutivo" class="form-control" placeholder="Consecutivo" value="<?php
+                        if ($datos == null) {
+                            echo '';
+                        } else {
+                            echo $datos[0]['Consecutivo'];
+                        }
+                        ?>"
+                               ></td>
                 </tr>
                 <tr>
                     <th><label for="nom">Producto:</label></th>
@@ -84,22 +107,22 @@ if (!isset($_REQUEST['txtProducto'])) {
                 <input type="hidden" class="form-control" style="width: 500px;" name="txtProducto" 
                        value='<?php echo serialize($datos) ?>'>
                 <table class="table table-hover">
-                    <thead>
-                        <tr>
-                            <td>Producto:</td>
-                            <td>Cantidad:</td>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php foreach ($datos as $valor) : ?>
+                        <thead>
                             <tr>
-                                <td><input type="text" class="form-control" style="width: 500px;" name="txtCod" 
-                                           value="<?php echo $valor['Producto']; ?>" readonly="readonly"></td>
-                                <td><input type="text" class="form-control" style="width: 50px;"  name="txtCan" 
-                                           value='<?php echo $valor['Cantidad']; ?>'></td>
+                                <td>Producto:</td>
+                                <td>Cantidad:</td>
                             </tr>
-                        <?php endforeach; ?>
-                    </tbody>
+                        </thead>
+                        <tbody>
+                            <?php foreach ($datos as $valor) : ?>
+                                <tr>
+                                    <td><input type="text" class="form-control" style="width: 500px;" name="txtCod" 
+                                               value="<?php echo $valor['Producto']; ?>" readonly="readonly"></td>
+                                    <td><input type="text" class="form-control" style="width: 50px;"  name="txtCan" 
+                                               value='<?php echo $valor['Cantidad']; ?>'></td>
+                                </tr>
+                            <?php endforeach; ?>
+                        </tbody>
                 </table>
                 <button type="" class="btn btn-primary" id="btnAceptar" name="btnAceptar" onclick="capturar();">Guardar Movimiento</button>
                 <button type="button" class="btn btn-danger" onclick="location.href = 'index.php?m=mov'">Cancelar Movimiento</button>
